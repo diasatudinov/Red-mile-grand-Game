@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "achievementsIconRMG.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
