@@ -1,22 +1,30 @@
+//
+//  MGCoinBg.swift
+//  Red Mile Grand Game
+//
+//  Created by Dias Atudinov on 04.06.2025.
+//
+
+
 import SwiftUI
 
 struct MGCoinBg: View {
     @StateObject var user = MGUser.shared
     var body: some View {
         ZStack {
-            Image(.coinsBgMG)
+            Image(.coinsBgRMG)
                 .resizable()
                 .scaledToFit()
             
             Text("\(user.money)")
-                .font(.system(size: MGDeviceManager.shared.deviceType == .pad ? 42:21, weight: .semibold))
-                .foregroundStyle(.yellow)
+                .font(.system(size: MGDeviceManager.shared.deviceType == .pad ? 42:21, weight: .bold))
+                .foregroundStyle(.black)
                 .textCase(.uppercase)
                 .offset(x: 20)
             
             
             
-        }.frame(height: MGDeviceManager.shared.deviceType == .pad ? 100:50)
+        }.frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:70)
         
     }
 }

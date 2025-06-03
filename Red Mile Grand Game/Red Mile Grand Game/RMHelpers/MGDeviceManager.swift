@@ -1,3 +1,11 @@
+//
+//  MGDeviceManager.swift
+//  Red Mile Grand Game
+//
+//  Created by Dias Atudinov on 04.06.2025.
+//
+
+
 import UIKit
 
 class MGDeviceManager {
