@@ -1,103 +1,117 @@
+//
+//  MGDailyTaskView.swift
+//  Red Mile Grand Game
+//
+//  Created by Dias Atudinov on 04.06.2025.
+//
+
+
 import SwiftUI
 
 struct MGDailyTaskView: View {
     @Environment(\.presentationMode) var presentationMode
-    
+    @State var task1Done = false
+    @State var task2Done = false
+    @State var task3Done = false
     var body: some View {
         ZStack {
             
+            ZStack {
+                Image(.dailyTaskBgRMG)
+                    .resizable()
+                    .scaledToFit()
+                
+                VStack(spacing: 5) {
+                    ZStack {
+                        HStack {
+                            Image(.task1TextRMG)
+                                .resizable()
+                                .scaledToFit()
+                                
+                        }
+                        HStack {
+                            Spacer()
+                            if task1Done {
+                                Image(.redStickIconRMG)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 90:50)
+                            }
+                        }
+                    }.frame(width: MGDeviceManager.shared.deviceType == .pad ? 600:350)
+                        .onTapGesture {
+                            task1Done.toggle()
+                        }
+                    
+                    ZStack {
+                        HStack {
+                            Image(.task2TextRMG)
+                                .resizable()
+                                .scaledToFit()
+                                
+                        }
+                        HStack {
+                            Spacer()
+                            if task2Done {
+                                Image(.redStickIconRMG)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 90:50)
+                            }
+                        }
+                    }.frame(width: MGDeviceManager.shared.deviceType == .pad ? 600:350)
+                        .onTapGesture {
+                            task2Done.toggle()
+                        }
+                    
+                    ZStack {
+                        HStack {
+                            Image(.task3TextRMG)
+                                .resizable()
+                                .scaledToFit()
+                                
+                        }
+                        HStack {
+                            Spacer()
+                            if task3Done {
+                                Image(.redStickIconRMG)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 90:50)
+                            }
+                        }
+                    }.frame(width: MGDeviceManager.shared.deviceType == .pad ? 600:350)
+                        .onTapGesture {
+                            task3Done.toggle()
+                        }
+                    
+                }.padding(.top, 20)
+                
+            }.frame(height: MGDeviceManager.shared.deviceType == .pad ? 600:330)
+                        
             VStack {
                 HStack {
                     HStack(alignment: .top) {
-                        VStack {
+                        VStack(alignment: .leading) {
                             Button {
                                 presentationMode.wrappedValue.dismiss()
                                 
                             } label: {
-                                Image(.backIconMG)
+                                Image(.backIconRMG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 100:50)
+                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:70)
                             }
                             
                             MGCoinBg().opacity(0)
                         }
                         
                         Spacer()
-                        Image(.dailyTaskTextMG)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 210:120)
-                        Spacer()
+                        
                         
                         MGCoinBg()
                     }.padding(.top)
                 }
-                
-                Spacer()
-                
-                HStack {
-                    
-                    ZStack {
-                        Image(.task1ImageMG)
-                            .resizable()
-                            .scaledToFit()
-                        
-                        
-                        VStack {
-                            Spacer()
-                            Button {
-                                
-                            } label: {
-                                Image(.priceFiftyMG)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 110:55)
-                            }
-                        }
-                        
-                    }.frame(height: MGDeviceManager.shared.deviceType == .pad ? 400:250)
-                    
-                    ZStack {
-                        Image(.task2ImageMG)
-                            .resizable()
-                            .scaledToFit()
-                        
-                        
-                        VStack {
-                            Spacer()
-                            Button {
-                                
-                            } label: {
-                                Image(.priceFiftyMG)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 110:55)
-                            }
-                        }
-                        
-                    }.frame(height: MGDeviceManager.shared.deviceType == .pad ? 400:250)
-                    
-                    ZStack {
-                        Image(.task3ImageMG)
-                            .resizable()
-                            .scaledToFit()
-                        
-                        
-                        VStack {
-                            Spacer()
-                            Button {
-                                
-                            } label: {
-                                Image(.priceFiftyMG)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 110:55)
-                            }
-                        }
-                        
-                    }.frame(height: MGDeviceManager.shared.deviceType == .pad ? 400:250)
-                }.offset(y: -25)
                 
                 Spacer()
                 
@@ -106,7 +120,7 @@ struct MGDailyTaskView: View {
         }
         .background(
             ZStack {
-                Image(.appBgMG)
+                Image(.appBgRMG)
                     .resizable()
                     .edgesIgnoringSafeArea(.all)
                     .scaledToFill()
