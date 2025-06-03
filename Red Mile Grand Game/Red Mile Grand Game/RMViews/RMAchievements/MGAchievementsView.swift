@@ -1,3 +1,11 @@
+//
+//  MGAchievementsView.swift
+//  Red Mile Grand Game
+//
+//  Created by Dias Atudinov on 04.06.2025.
+//
+
+
 import SwiftUI
 
 struct MGAchievementsView: View {
@@ -11,34 +19,36 @@ struct MGAchievementsView: View {
             VStack {
                 HStack {
                     HStack(alignment: .top) {
-                        VStack {
+                        VStack(alignment: .leading) {
                             Button {
                                 presentationMode.wrappedValue.dismiss()
                                 
                             } label: {
-                                Image(.backIconMG)
+                                Image(.backIconRMG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 100:50)
+                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:70)
                             }
                             
                             MGCoinBg().opacity(0)
                         }
                         Spacer()
-                        Image(.archieveTextMG)
+                        Image(.achiTextRMG)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 210:105)
+                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
                         Spacer()
                         MGCoinBg()
                     }.padding([.top])
                 }
                 
-               
-                Spacer()
+                
                 HStack {
                     ForEach(viewModel.achievements, id: \.self) { achieve in
                         achievementItem(item: achieve)
+                            .onTapGesture {
+                                viewModel.achieveToggle(achieve)
+                            }
                     }
                     
                 }
@@ -47,7 +57,7 @@ struct MGAchievementsView: View {
             }
         }.background(
             ZStack {
-                Image(.appBgMG)
+                Image(.appBgRMG)
                     .resizable()
                     .edgesIgnoringSafeArea(.all)
                     .scaledToFill()
@@ -56,26 +66,44 @@ struct MGAchievementsView: View {
     }
     
     @ViewBuilder func achievementItem(item: MGAchievement) -> some View {
-        VStack(spacing: 0) {
+        
+        ZStack {
             Image(item.image)
                 .resizable()
                 .scaledToFit()
-                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 400:200)
-                .opacity(item.isAchieved ? 1:0.5)
-            
-            Button {
-                if !item.isAchieved {
-                    user.updateUserMoney(for: 100)
-                }
-                    viewModel.achieveToggle(item)
                 
-            } label: {
-                Image(.priceHundredMG)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 100:50)
+            
+            VStack(spacing: 0) {
+                
+                Spacer()
+                
+                    Image(.stickIconRMG)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: MGDeviceManager.shared.deviceType == .pad ? 100:50)
+                
             }
+        }.frame(height: MGDeviceManager.shared.deviceType == .pad ? 320:160)
+            .opacity(item.isAchieved ? 1:0.5)
+            .offset(y: offsetConfig(item: item))
+    }
+    
+    private func offsetConfig(item: MGAchievement) -> CGFloat {
+        switch item.image {
+        case "achieve1ImageRMG":
+            return -40
+        case "achieve2ImageRMG":
+            return 40
+        case "achieve3ImageRMG":
+            return -50
+        case "achieve4ImageRMG":
+            return 40
+        case "achieve5ImageRMG":
+            return -40
+        default:
+            return 0
         }
+        
     }
     
 }

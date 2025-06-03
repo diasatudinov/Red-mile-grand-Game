@@ -1,13 +1,21 @@
+//
+//  MGAchievementsViewModel.swift
+//  Red Mile Grand Game
+//
+//  Created by Dias Atudinov on 04.06.2025.
+//
+
+
 import SwiftUI
 
 class MGAchievementsViewModel: ObservableObject {
     
     @Published var achievements: [MGAchievement] = [
-        MGAchievement(image: "achieve1ImageMG", isAchieved: false),
-        MGAchievement(image: "achieve2ImageMG", isAchieved: false),
-        MGAchievement(image: "achieve3ImageMG", isAchieved: false),
-        MGAchievement(image: "achieve4ImageMG", isAchieved: false),
-        MGAchievement(image: "achieve5ImageMG", isAchieved: false)
+        MGAchievement(image: "achieve1ImageRMG", isAchieved: false),
+        MGAchievement(image: "achieve2ImageRMG", isAchieved: false),
+        MGAchievement(image: "achieve3ImageRMG", isAchieved: false),
+        MGAchievement(image: "achieve4ImageRMG", isAchieved: false),
+        MGAchievement(image: "achieve5ImageRMG", isAchieved: false)
 
     ] {
         didSet {
