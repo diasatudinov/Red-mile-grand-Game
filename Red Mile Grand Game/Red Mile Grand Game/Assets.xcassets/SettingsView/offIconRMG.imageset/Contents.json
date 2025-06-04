@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "offIconRMG.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

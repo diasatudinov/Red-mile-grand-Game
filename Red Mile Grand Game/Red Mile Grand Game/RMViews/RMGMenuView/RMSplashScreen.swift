@@ -1,10 +1,3 @@
-//
-//  RMSplashScreen.swift
-//  Red Mile Grand Game
-//
-//  Created by Dias Atudinov on 03.06.2025.
-//
-
 import SwiftUI
 
 struct RMSplashScreen: View {

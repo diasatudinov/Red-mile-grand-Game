@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "кнопка для отсчета времени.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
