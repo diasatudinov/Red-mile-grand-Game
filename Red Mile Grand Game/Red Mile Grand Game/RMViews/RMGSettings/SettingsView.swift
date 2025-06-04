@@ -8,59 +8,59 @@ struct SettingsView: View {
         ZStack {
             
             ZStack {
-                Image(.settingsViewBgGE)
+                Image(.settingsViewBgRMG)
                     .resizable()
                     .scaledToFit()
                 VStack(spacing: 30) {
                     HStack {
-                        Image(.soundIconGE)
+                        Image(.soundIconRMG)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: GEDeviceManager.shared.deviceType == .pad ? 80:40)
+                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 160:80)
                         VStack {
-                            Image(.soundTextGE)
+                            Image(.soundTextRMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: GEDeviceManager.shared.deviceType == .pad ? 30:15)
+                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 20:10)
                             Button {
                                 withAnimation {
                                     settingsVM.soundEnabled.toggle()
                                 }
                             } label: {
                                 
-                                Image(settingsVM.soundEnabled ? .onIconGE:.offIconGE)
+                                Image(settingsVM.soundEnabled ? .onIconRMG:.offIconRMG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: GEDeviceManager.shared.deviceType == .pad ? 40:20)
+                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 80:40)
                             }
                         }
                     }
                     
                     HStack {
-                        Image(.musicIconGE)
+                        Image(.musicIconRMG)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: GEDeviceManager.shared.deviceType == .pad ? 110:55)
+                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 160:80)
                         VStack {
-                            Image(.musicTextGE)
+                            Image(.musicTextRMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: GEDeviceManager.shared.deviceType == .pad ? 30:15)
+                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 20:10)
                             Button {
                                 withAnimation {
                                     settingsVM.musicEnabled.toggle()
                                 }
                             } label: {
                                 
-                                Image(settingsVM.musicEnabled ? .onIconGE:.offIconGE)
+                                Image(settingsVM.musicEnabled ? .onIconRMG:.offIconRMG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: GEDeviceManager.shared.deviceType == .pad ? 40:20)
+                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 80:40)
                             }
                         }
                     }
                 }
-            }.frame(height: GEDeviceManager.shared.deviceType == .pad ? 600:300)
+            }.frame(height: MGDeviceManager.shared.deviceType == .pad ? 650:350)
             
             VStack {
                 HStack {
@@ -69,10 +69,10 @@ struct SettingsView: View {
                             presentationMode.wrappedValue.dismiss()
                             
                         } label: {
-                            Image(.backIconGE)
+                            Image(.backIconRMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: GEDeviceManager.shared.deviceType == .pad ? 150:75)
+                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 150:75)
                         }
                         Spacer()
                        
@@ -82,7 +82,7 @@ struct SettingsView: View {
             }
         }.background(
             ZStack {
-                Image(.menuBgGE)
+                Image(.appBgRMG)
                     .resizable()
                     .edgesIgnoringSafeArea(.all)
                     .scaledToFill()
