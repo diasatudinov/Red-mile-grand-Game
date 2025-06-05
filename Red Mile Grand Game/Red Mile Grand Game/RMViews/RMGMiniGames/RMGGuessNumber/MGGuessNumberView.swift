@@ -34,18 +34,17 @@ struct MGGuessNumberView: View {
                                 
                                 ZStack {
                                     
-                                    Image(.numBgMG)
-                                        .resizable()
-                                        .scaledToFit()
-                                    
                                     HStack(spacing: 5) {
                                         ForEach(0..<3) { idx in
                                             ZStack {
+                                                Image(.numBgRMG)
+                                                    .resizable()
+                                                    .scaledToFit()
                                                 
                                                 Text(idx < guessDigits.count ? guessDigits[idx] : "" )
                                                     .font(.system(size: 36, weight: .bold))
                                                     .foregroundColor(.white)
-                                            }.frame(width: MGDeviceManager.shared.deviceType == .pad ? 40:20, height: MGDeviceManager.shared.deviceType == .pad ? 150:83)
+                                            }.frame(width: MGDeviceManager.shared.deviceType == .pad ? 250:150, height: MGDeviceManager.shared.deviceType == .pad ? 250:150)
                                         }
                                     }
                                     
@@ -57,12 +56,12 @@ struct MGGuessNumberView: View {
                                     ForEach(padNumbers, id: \ .self) { num in
                                         Button(action: { numberPressed(num) }) {
                                             ZStack {
-                                                Image(.numberEnterBgMG)
+                                                Image(.numberBgRMG)
                                                     .resizable()
                                                     .scaledToFit()
                                                 Text("\(num)")
                                                     .font(.system(size: MGDeviceManager.shared.deviceType == .pad ? 50:36, weight: .bold))
-                                                    .foregroundColor(.yellow)
+                                                    .foregroundColor(.red)
                                             }.frame(width: MGDeviceManager.shared.deviceType == .pad ? 100:72, height: MGDeviceManager.shared.deviceType == .pad ? 100:72)
                                         }
                                         .disabled(guessDigits.count >= 3)
@@ -76,75 +75,13 @@ struct MGGuessNumberView: View {
                     }
                 }
                 
-                if !feedback.isEmpty {
-                    Text(feedback)
-                        .font(.title2)
-                        .foregroundColor(.yellow)
-                        .padding(.bottom, 10)
-                        .shadow(radius: 2)
-                    
-                    ZStack {
-                        
-                        if Int(guessDigits.joined()) ?? 0 < target {
-                            Image(.biggerTextMG)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 250:125)
-                        } else if Int(guessDigits.joined()) ?? 0 > target {
-                            Image(.smallerTextMG)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 250:125)
-                        } else {
-                            ZStack {
-                                VStack(spacing: -10) {
-                                    
-                                    Image(.guessTheNumTextMG)
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(height: MGDeviceManager.shared.deviceType == .pad ? 210:105)
-                                    
-                                    ZStack {
-                                        
-                                        Image(.numBgMG)
-                                            .resizable()
-                                            .scaledToFit()
-                                        
-                                        Text("\(target)")
-                                            .font(.system(size: 42, weight: .semibold))
-                                            .foregroundStyle(.green)
-                                        
-                                        
-                                    }.frame(height: MGDeviceManager.shared.deviceType == .pad ? 400:200)
-                                    
-                                    Image(.winTwentyMG)
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
-                                    
-                                    Button {
-                                        resetGame()
-                                        user.updateUserMoney(for: 20)
-                                    } label: {
-                                        Image(.takeTextMG)
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    
-                }
-                
                 VStack {
                     ZStack {
                         HStack {
-                            Image(.guessTheNumTextMG)
+                            Image(.guessNumTextRMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 210:105)
+                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 100:50)
                         }
                         
                         HStack(alignment: .top) {
@@ -152,7 +89,7 @@ struct MGGuessNumberView: View {
                                 presentationMode.wrappedValue.dismiss()
                                 
                             } label: {
-                                Image(.backIconMG)
+                                Image(.backIconRMG)
                                     .resizable()
                                     .scaledToFit()
                                     .frame(height: MGDeviceManager.shared.deviceType == .pad ? 100:50)
@@ -167,9 +104,105 @@ struct MGGuessNumberView: View {
                     
                     Spacer()
                 }.padding()
+                
+                                
+                if !feedback.isEmpty {
+                    Text(feedback)
+                        .font(.title2)
+                        .foregroundColor(.yellow)
+                        .padding(.bottom, 10)
+                        .shadow(radius: 2)
+                    
+                    ZStack {
+                        Color.black.opacity(0.8).ignoresSafeArea()
+                        
+                        if Int(guessDigits.joined()) ?? 0 < target {
+                            ZStack {
+                                Image(.incorrectBgRMG)
+                                    .resizable()
+                                    .scaledToFit()
+                                
+                                
+                                Image(.higherTextRMG)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 30:15)
+                                    .offset(y: MGDeviceManager.shared.deviceType == .pad ? 30:15)
+                                
+                                
+                            }.frame(height: MGDeviceManager.shared.deviceType == .pad ? 500:250)
+                        } else if Int(guessDigits.joined()) ?? 0 > target {
+                            ZStack {
+                                Image(.incorrectBgRMG)
+                                    .resizable()
+                                    .scaledToFit()
+                                
+                                
+                                Image(.lowerTextRMG)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 30:15)
+                                    .offset(y: MGDeviceManager.shared.deviceType == .pad ? 30:15)
+                                
+                                
+                            }.frame(height: MGDeviceManager.shared.deviceType == .pad ? 500:250)
+                        } else {
+                            
+                            ZStack {
+                                Image(.correctBgRMG)
+                                    .resizable()
+                                    .scaledToFit()
+                                
+                                VStack {
+                                    Spacer()
+                                    
+                                    HStack(spacing: 20) {
+                                        
+                                        Button {
+                                            presentationMode.wrappedValue.dismiss()
+                                        } label: {
+                                            Image(.homeBtnRMG)
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
+                                        }
+                                        
+                                        Button {
+                                            resetGame()
+                                            user.updateUserMoney(for: 20)
+                                        } label: {
+                                            Image(.backIconRMG)
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:80)
+                                                .scaleEffect(x: -1, y: 1)
+                                        }
+                                        
+                                        Button {
+                                            resetGame()
+                                            user.updateUserMoney(for: 20)
+                                        } label: {
+                                            Image(.restartBtnRMG)
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
+                                        }
+                                    }
+                                }
+                                
+                                
+                            }.frame(height: MGDeviceManager.shared.deviceType == .pad ? 500:250)
+
+                            
+                        }
+                    }
+                    
+                }
+                
+                
             }.background(
                 ZStack {
-                    Image(.appBgMG)
+                    Image(.appBgRMG)
                         .resizable()
                         .edgesIgnoringSafeArea(.all)
                         .scaledToFill()

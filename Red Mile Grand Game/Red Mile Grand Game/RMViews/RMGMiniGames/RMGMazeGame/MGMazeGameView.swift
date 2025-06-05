@@ -1,3 +1,11 @@
+//
+//  MGMazeGameView.swift
+//  Red Mile Grand Game
+//
+//  Created by Dias Atudinov on 05.06.2025.
+//
+
+
 import SwiftUI
 import SpriteKit
 
@@ -21,10 +29,10 @@ struct MGMazeGameView: View {
                 ZStack {
                     
                     HStack(alignment: .top) {
-                        Image(.mazeTextMG)
+                        Image(.mazeTextRMG)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 180:91)
+                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 100:50)
                     }
                     
                     HStack(alignment: .top) {
@@ -32,7 +40,7 @@ struct MGMazeGameView: View {
                             presentationMode.wrappedValue.dismiss()
                             
                         } label: {
-                            Image(.backIconMG)
+                            Image(.backIconRMG)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: MGDeviceManager.shared.deviceType == .pad ? 100:50)
@@ -48,45 +56,24 @@ struct MGMazeGameView: View {
                 
                 Spacer()
                 HStack {
-                    VStack {
-                        ZStack {
-                            Image(.numBgMG)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 250:150)
-                            
-                            Text("Tries: 1")
-                                .font(.system(size: 23, weight: .semibold))
-                                .foregroundStyle(.yellow)
-                        }
-                        
-                        Button {
-                            gameScene.restartGame()
-                            isWin = false
-                        } label: {
-                            Image(.restartBtnMG)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 130:65)
-                        }
-                    }
+                    
                     Spacer()
-                VStack(spacing: 0) {
+                VStack(spacing: -20) {
                     Spacer()
                     Button {
                         gameScene.moveUp()
                         
                     } label: {
-                        Image(.controlArrowMG)
+                        Image(.arrowUpRMG)
                             .resizable()
                             .scaledToFit()
                             .frame(height: MGDeviceManager.shared.deviceType == .pad ? 130:65)
                     }
-                    HStack(spacing: MGDeviceManager.shared.deviceType == .pad ? 100:50) {
+                    HStack(spacing: MGDeviceManager.shared.deviceType == .pad ? 60:30) {
                         Button {
                             gameScene.moveLeft()
                         } label: {
-                            Image(.controlArrowMG)
+                            Image(.arrowUpRMG)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: MGDeviceManager.shared.deviceType == .pad ? 130:65)
@@ -97,7 +84,7 @@ struct MGMazeGameView: View {
                         Button {
                             gameScene.moveRight()
                         } label: {
-                            Image(.controlArrowMG)
+                            Image(.arrowUpRMG)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: MGDeviceManager.shared.deviceType == .pad ? 130:65)
@@ -108,7 +95,7 @@ struct MGMazeGameView: View {
                     Button {
                         gameScene.moveDown()
                     } label: {
-                        Image(.controlArrowMG)
+                        Image(.arrowUpRMG)
                             .resizable()
                             .scaledToFit()
                             .frame(height: MGDeviceManager.shared.deviceType == .pad ? 130:65)
@@ -122,39 +109,56 @@ struct MGMazeGameView: View {
             
             if isWin {
                 ZStack {
-                    Color.black.opacity(0.5).ignoresSafeArea()
-                    VStack(spacing: -10) {
-                        
-                        Image(.wayFoundTextMG)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 210:105)
+                    Image(.correctBgRMG)
+                        .resizable()
+                        .scaledToFit()
                     
-                        
-                        Image(.winTwentyMG)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
-                        
+                    VStack {
                         Spacer()
                         
-                        Button {
-                            presentationMode.wrappedValue.dismiss()
-                            MGUser.shared.updateUserMoney(for: 20)
-
-                        } label: {
-                            Image(.takeTextMG)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
+                        HStack(spacing: 20) {
+                            
+                            Button {
+                                presentationMode.wrappedValue.dismiss()
+                            } label: {
+                                Image(.homeBtnRMG)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
+                            }
+                            
+                            Button {
+                                gameScene.restartGame()
+                                isWin = false
+                            } label: {
+                                Image(.backIconRMG)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:80)
+                                    .scaleEffect(x: -1, y: 1)
+                            }
+                            
+                            Button {
+                                gameScene.restartGame()
+                                isWin = false
+                            } label: {
+                                Image(.restartBtnRMG)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
+                            }
                         }
                     }
-                }
+                    
+                    
+                }.frame(height: MGDeviceManager.shared.deviceType == .pad ? 500:250)
+
+                
             }
             
         }.background(
             ZStack {
-                Image(.appBgMG)
+                Image(.appBgRMG)
                     .resizable()
                     .edgesIgnoringSafeArea(.all)
                     .scaledToFill()
