@@ -1,3 +1,11 @@
+//
+//  MGGameScene.swift
+//  Red Mile Grand Game
+//
+//  Created by Dias Atudinov on 05.06.2025.
+//
+
+
 import SpriteKit
 import GameplayKit
 import SwiftUI

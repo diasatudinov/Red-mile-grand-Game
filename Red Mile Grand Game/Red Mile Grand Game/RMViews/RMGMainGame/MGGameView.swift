@@ -1,3 +1,11 @@
+//
+//  MGGameView.swift
+//  Red Mile Grand Game
+//
+//  Created by Dias Atudinov on 05.06.2025.
+//
+
+
 import SwiftUI
 import SpriteKit
 
@@ -28,7 +36,7 @@ struct MGGameView: View {
                             presentationMode.wrappedValue.dismiss()
                             
                         } label: {
-                            Image(.backIconMG)
+                            Image(.backIconRMG)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: MGDeviceManager.shared.deviceType == .pad ? 100:50)
@@ -44,10 +52,6 @@ struct MGGameView: View {
             HStack {
                 Spacer()
                 ZStack {
-                    Image(.stickBgMG)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(height: MGDeviceManager.shared.deviceType == .pad ? 500:250)
                     
                     VStack(spacing: 12) {
                         
@@ -55,14 +59,14 @@ struct MGGameView: View {
                             gameScene.sendPercent = sendPercentage
                         } label: {
                             ZStack {
-                                Image(.persentBgMG)
+                                Image(.persentBgRMG)
                                     .resizable()
                                     .scaledToFit()
                                     .frame(height: MGDeviceManager.shared.deviceType == .pad ? 150:80)
                                 
                                 Text("Max")
                                     .font(.system(size: MGDeviceManager.shared.deviceType == .pad ? 35:20, weight: .semibold))
-                                    .foregroundStyle(.yellow)
+                                    .foregroundStyle(.black)
                             }
                         }
                         
@@ -70,14 +74,14 @@ struct MGGameView: View {
                             gameScene.sendPercent = sendPercentage
                         } label: {
                             ZStack {
-                                Image(.persentBgMG)
+                                Image(.persentBgRMG)
                                     .resizable()
                                     .scaledToFit()
                                     .frame(height: MGDeviceManager.shared.deviceType == .pad ? 150:80)
                                 
                                 Text("75%")
                                     .font(.system(size: MGDeviceManager.shared.deviceType == .pad ? 35:20, weight: .semibold))
-                                    .foregroundStyle(.yellow)
+                                    .foregroundStyle(.black)
                             }
                         }
                         
@@ -85,14 +89,14 @@ struct MGGameView: View {
                             gameScene.sendPercent = sendPercentage
                         } label: {
                             ZStack {
-                                Image(.persentBgMG)
+                                Image(.persentBgRMG)
                                     .resizable()
                                     .scaledToFit()
                                     .frame(height: MGDeviceManager.shared.deviceType == .pad ? 150:80)
                                 
                                 Text("50%")
                                     .font(.system(size: MGDeviceManager.shared.deviceType == .pad ? 35:20, weight: .semibold))
-                                    .foregroundStyle(.yellow)
+                                    .foregroundStyle(.black)
                             }
                         }
                         
@@ -100,14 +104,14 @@ struct MGGameView: View {
                             gameScene.sendPercent = sendPercentage
                         } label: {
                             ZStack {
-                                Image(.persentBgMG)
+                                Image(.persentBgRMG)
                                     .resizable()
                                     .scaledToFit()
                                     .frame(height: MGDeviceManager.shared.deviceType == .pad ? 150:80)
                                 
                                 Text("25%")
                                     .font(.system(size: MGDeviceManager.shared.deviceType == .pad ? 35:20, weight: .semibold))
-                                    .foregroundStyle(.yellow)
+                                    .foregroundStyle(.black)
                             }
                         }
                         
@@ -124,73 +128,87 @@ struct MGGameView: View {
             if let winner = winner {
                 if winner == "синяя" {
                     ZStack {
-                        Color.black.opacity(0.5).ignoresSafeArea()
+                        Image(.winBgRMG)
+                            .resizable()
+                            .scaledToFit()
                         
-                        HStack {
+                        VStack() {
                             
-                            Image(.manImage1MG)
-                                .resizable()
-                                .scaledToFit()
-                            
-                            VStack {
-                                Image(.winTextMG)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 400:200)
-                                
-                                Image(.priceFiftyMG)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
+                            Spacer()
+                            HStack(spacing: 20) {
                                 
                                 Button {
-                                    gameScene.restartGame()
-                                    self.winner = nil
-                                    MGUser.shared.updateUserMoney(for: 50)
+                                    presentationMode.wrappedValue.dismiss()
+                                    MGUser.shared.updateUserMoney(for: 100)
                                 } label: {
-                                    Image(.takeTextMG)
+                                    Image(.homeBtnRMG)
                                         .resizable()
                                         .scaledToFit()
                                         .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
                                 }
                                 
+                                Button {
+                                    gameScene.restartGame()
+                                    self.winner = nil
+                                    MGUser.shared.updateUserMoney(for: 100)
+                                } label: {
+                                    Image(.backIconRMG)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:80)
+                                        .scaleEffect(x: -1, y: 1)
+                                }
+                                
+                                Button {
+                                    gameScene.restartGame()
+                                    self.winner = nil
+                                    MGUser.shared.updateUserMoney(for: 100)
+                                } label: {
+                                    Image(.restartBtnRMG)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
+                                }
                             }
                             
-                            Image(.man2ImageMG)
-                                .resizable()
-                                .scaledToFit()
-                        }.ignoresSafeArea()
-                    }
+                        }
+                    }.frame(height: MGDeviceManager.shared.deviceType == .pad ? 600:300)
+
                 } else {
                     ZStack {
-                        Color.black.opacity(0.5).ignoresSafeArea()
+                        Image(.loseBgRMG)
+                            .resizable()
+                            .scaledToFit()
                         
-                        HStack {
+                        VStack() {
                             
-                            VStack {
-                                Image(.youLoseTextMG)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 200:120)
-                               
+                            Spacer()
+                            HStack(spacing: 20) {
                                 
                                 Button {
-                                    gameScene.restartGame()
-                                    self.winner = nil
+                                    presentationMode.wrappedValue.dismiss()
                                 } label: {
-                                    Image(.retreTextMG)
+                                    Image(.homeBtnRMG)
                                         .resizable()
                                         .scaledToFit()
                                         .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
                                 }
                                 
+                                
+                                Button {
+                                    gameScene.restartGame()
+                                    self.winner = nil
+                                } label: {
+                                    Image(.restartBtnRMG)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
+                                }
                             }
                             
-                            Image(.man2ImageMG)
-                                .resizable()
-                                .scaledToFit()
-                        }.ignoresSafeArea()
-                    }
+                        }
+                    }.frame(height: MGDeviceManager.shared.deviceType == .pad ? 600:300)
+
                 }
             }
             
