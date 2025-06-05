@@ -12,15 +12,15 @@ import SwiftUI
 class MGShopViewModel: ObservableObject {
     @Published var shopBgItems: [MGItem] = [
         
-        MGItem(name: "bg1", image: "gameRealBg1MG", icon: "gameBg1MG", price: 100),
-        MGItem(name: "bg2", image: "gameRealBg2MG", icon: "gameBg2MG", price: 100),
-        MGItem(name: "bg3", image: "gameRealBg3MG", icon: "gameBg3MG", price: 100),
-        MGItem(name: "bg4", image: "gameRealBg4MG", icon: "gameBg4MG", price: 100),
-        
+        MGItem(name: "bg1", image: "gameRealBg1RMG", icon: "gameBg1RMG", price: 500),
+        MGItem(name: "bg2", image: "gameRealBg2RMG", icon: "gameBg2RMG", price: 500),
+        MGItem(name: "bg3", image: "gameRealBg3RMG", icon: "gameBg3RMG", price: 500),
+        MGItem(name: "bg4", image: "gameRealBg4RMG", icon: "gameBg4RMG", price: 500),
+        MGItem(name: "bg5", image: "gameRealBg5RMG", icon: "gameBg5RMG", price: 500),
     ]
     
     @Published var boughtItems: [MGItem] = [
-        MGItem(name: "bg1", image: "gameRealBg1MG", icon: "gameBg1MG", price: 100),
+        MGItem(name: "bg1", image: "gameRealBg1RMG", icon: "gameBg1RMG", price: 500),
     ] {
         didSet {
             saveBoughtItem()
@@ -38,8 +38,8 @@ class MGShopViewModel: ObservableObject {
         loadBoughtItem()
     }
     
-    private let userDefaultsBgKey = "backgroundKeyMG"
-    private let userDefaultsBoughtKey = "boughtShopItemsMG"
+    private let userDefaultsBgKey = "backgroundKeyRMG"
+    private let userDefaultsBoughtKey = "boughtShopItemsRMG"
 
     
     func saveCurrentBg() {
