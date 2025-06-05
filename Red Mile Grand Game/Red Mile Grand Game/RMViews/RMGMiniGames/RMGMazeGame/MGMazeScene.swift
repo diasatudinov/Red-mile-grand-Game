@@ -1,3 +1,11 @@
+//
+//  MGMazeScene.swift
+//  Red Mile Grand Game
+//
+//  Created by Dias Atudinov on 05.06.2025.
+//
+
+
 import SpriteKit
 import UIKit
 
@@ -73,7 +81,7 @@ class MGMazeScene: SKScene {
             for c in 0..<gridCols where maze[r][c] == 1 {
                 let x = mazeOrigin.x + CGFloat(c) * tileSize.width + tileSize.width/2
                 let y = mazeOrigin.y + CGFloat(gridRows - r - 1) * tileSize.height + tileSize.height/2
-                let wall = SKSpriteNode(color: .white, size: wallSize)
+                let wall = SKSpriteNode(color: .mazeLine, size: wallSize)
                 wall.position = CGPoint(x: x, y: y)
                 addChild(wall)
             }
@@ -88,7 +96,7 @@ class MGMazeScene: SKScene {
         let height = CGFloat(rows) * tileSize.height
 
         let bgSize = CGSize(width: width, height: height)
-        let bgNode = SKSpriteNode(color: .appBrown, size: bgSize)
+        let bgNode = SKSpriteNode(color: .mazeBg, size: bgSize)
 
         bgNode.position = CGPoint(
             x: mazeOrigin.x + width / 2,
@@ -102,7 +110,7 @@ class MGMazeScene: SKScene {
 
         let startRow = 1, startCol = 1
         let pos = positionForCell(row: startRow, col: startCol)
-        let texture = SKTexture(imageNamed: "redSquareMG")
+        let texture = SKTexture(imageNamed: "solderIconRMG")
         player = SKSpriteNode(texture: texture, size: tileSize)
         player.position = pos
         addChild(player)
@@ -115,7 +123,7 @@ class MGMazeScene: SKScene {
         for r in 0..<gridRows {
             for c in 0..<gridCols where maze[r][c] == 2 {
                 let pos = positionForCell(row: r, col: c)
-                let texture = SKTexture(imageNamed: "blueSquareMG")
+                let texture = SKTexture(imageNamed: "exitIconRMG")
                 exitNode = SKSpriteNode(texture: texture, size: tileSize)
                 exitNode.position = pos
                 addChild(exitNode)
