@@ -1,3 +1,11 @@
+//
+//  MGFindSequenceView.swift
+//  Red Mile Grand Game
+//
+//  Created by Dias Atudinov on 05.06.2025.
+//
+
+
 import SwiftUI
 
 struct MGFindSequenceView: View {
@@ -5,13 +13,14 @@ struct MGFindSequenceView: View {
     @Environment(\.presentationMode) var presentationMode
     
     let cardImages = [
-        "sequenceCardFace1MG",
-        "sequenceCardFace2MG",
-        "sequenceCardFace3MG",
-        "sequenceCardFace4MG",
-        "sequenceCardFace5MG",
-        "sequenceCardFace6MG",
-        "sequenceCardFace7MG"
+        "sequenceCardFace1RMG",
+        "sequenceCardFace2RMG",
+        "sequenceCardFace3RMG",
+        "sequenceCardFace4RMG",
+        "sequenceCardFace5RMG",
+        "sequenceCardFace6RMG",
+        "sequenceCardFace7RMG",
+        "sequenceCardFace8RMG"
     ]
     let sequenceLength = 3
     
@@ -20,6 +29,13 @@ struct MGFindSequenceView: View {
     @State private var gamePhase: GamePhase = .showing
     @State private var userInputIndex = 0
     @State private var feedback: String? = nil
+    
+    private let columns = [
+            GridItem(.flexible()),
+            GridItem(.flexible()),
+            GridItem(.flexible()),
+            GridItem(.flexible())
+        ]
     
     enum GamePhase {
         case showing
@@ -30,32 +46,36 @@ struct MGFindSequenceView: View {
     var body: some View {
         ZStack {
             VStack {
-                HStack {
-                    VStack {
-                        HStack(alignment: .top) {
-                            HStack {
-                                Button {
-                                    presentationMode.wrappedValue.dismiss()
-                                    
-                                } label: {
-                                    Image(.backIconMG)
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(height: MGDeviceManager.shared.deviceType == .pad ? 100:50)
-                                }
-                                
-                            }
-                            Spacer()
-                            
-                            MGCoinBg()
-                        }.padding([.horizontal, .top])
+                ZStack(alignment: .bottom) {
+                    HStack {
+                        Image(.findSequenceGameTextRMG)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 100:50)
                     }
+                    HStack {
+                        VStack {
+                            HStack(alignment: .top) {
+                                HStack {
+                                    Button {
+                                        presentationMode.wrappedValue.dismiss()
+                                        
+                                    } label: {
+                                        Image(.backIconRMG)
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 100:50)
+                                    }
+                                    
+                                }
+                                Spacer()
+                                
+                                MGCoinBg()
+                            }.padding([.horizontal, .top])
+                        }
+                    }
+                    
                 }
-                
-                Image(.findSequenceGameTextMG)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 180:90)
                 
                 Spacer()
                 
@@ -63,21 +83,24 @@ struct MGFindSequenceView: View {
                     // Full-screen reveal of each card in sequence
                     if let idx = currentStep {
                         MemorizationCardView(imageName: cardImages[idx])
-                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 340:170)
+                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 400:200)
                             .padding()
                             .transition(.opacity)
                     }
                 } else {
                     // Grid for user interaction
-                    HStack(spacing: 12) {
+                    LazyVGrid(columns: columns, spacing: 20) {
                         ForEach(0..<cardImages.count, id: \.self) { index in
                             MemorizationCardView(imageName: cardImages[index])
+                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 240:120)
                                 .onTapGesture {
                                     handleTap(on: index)
                                 }
                         }
-                    }
-                    .padding()
+                    }.frame(width: MGDeviceManager.shared.deviceType == .pad ? 900:450)
+                    
+                    
+                    
                 }
                 
                 Spacer()
@@ -89,55 +112,88 @@ struct MGFindSequenceView: View {
                 
                 if userInputIndex >= sequenceLength {
                     ZStack {
+                        Image(.winBgRMG)
+                            .resizable()
+                            .scaledToFit()
+                        
                         VStack() {
-                            Image(.sequebceCorrectTextMG)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 250:125)
-                            
-                            Image(.winTwentyMG)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
                             
                             Spacer()
-                            Button {
-                                startGame()
-                            } label: {
-                                Image(.takeTextMG)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
+                            HStack(spacing: 20) {
+                                
+                                Button {
+                                    presentationMode.wrappedValue.dismiss()
+                                } label: {
+                                    Image(.homeBtnRMG)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
+                                }
+                                
+                                Button {
+                                    startGame()
+                                } label: {
+                                    Image(.backIconRMG)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:80)
+                                        .scaleEffect(x: -1, y: 1)
+                                }
+                                
+                                Button {
+                                    startGame()
+                                } label: {
+                                    Image(.restartBtnRMG)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
+                                }
                             }
+                            
                         }
-                    }
+                    }.frame(height: MGDeviceManager.shared.deviceType == .pad ? 600:300)
+
                 } else {
                     ZStack {
-                        VStack {
-                            Image(.sequebceWrongTextMG)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 250:125)
+                        Image(.loseBgRMG)
+                            .resizable()
+                            .scaledToFit()
+                        
+                        VStack() {
                             
                             Spacer()
-                            
-                            Button {
-                                startGame()
-                            } label: {
-                                Image(.retreTextMG)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
+                            HStack(spacing: 20) {
+                                
+                                Button {
+                                    presentationMode.wrappedValue.dismiss()
+                                } label: {
+                                    Image(.homeBtnRMG)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
+                                }
+                                
+                                
+                                Button {
+                                    startGame()
+                                } label: {
+                                    Image(.restartBtnRMG)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
+                                }
                             }
+                            
                         }
-                    }
+                    }.frame(height: MGDeviceManager.shared.deviceType == .pad ? 600:300)
+
                 }
                 
             }
         }
         .background(
             ZStack {
-                Image(.appBgMG)
+                Image(.appBgRMG)
                     .resizable()
                     .edgesIgnoringSafeArea(.all)
                     .scaledToFill()
@@ -189,7 +245,7 @@ struct MGFindSequenceView: View {
             userInputIndex += 1
             if userInputIndex >= sequenceLength {
                 feedback = "Correct! You win!"
-                user.updateUserMoney(for: 20)
+                user.updateUserMoney(for: 100)
                 gamePhase = .finished
                 
             }
@@ -208,6 +264,7 @@ struct MemorizationCardView: View {
             .scaledToFit()
             .cornerRadius(8)
             .shadow(radius: 4)
+            
     }
 }
 
