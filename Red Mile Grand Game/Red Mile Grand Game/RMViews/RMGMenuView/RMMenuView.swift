@@ -12,7 +12,7 @@ struct RMMenuView: View {
     @StateObject var achievementVM = MGAchievementsViewModel()
     @StateObject var settingsVM = SettingsViewModelGE()
     @StateObject var calendarVM = CalendarViewModel()
-//    @StateObject var shopVM = MGShopViewModel()
+    @StateObject var shopVM = MGShopViewModel()
     
     var body: some View {
         
@@ -131,16 +131,16 @@ struct RMMenuView: View {
             }
         )
         .fullScreenCover(isPresented: $showGame) {
-        //    MGLevelsMainGameView(shopVM: shopVM)
+            MGLevelsMainGameView(shopVM: shopVM)
         }
         .fullScreenCover(isPresented: $showMiniGames) {
-        //    MGMiniGameChooseView()
+            RMGMiniGameChooseView()
         }
         .fullScreenCover(isPresented: $showAchievement) {
             MGAchievementsView(viewModel: achievementVM)
         }
         .fullScreenCover(isPresented: $showShop) {
-         //   MGShopView(viewModel: shopVM)
+            MGShopView(viewModel: shopVM)
         }
         .fullScreenCover(isPresented: $showSettings) {
             SettingsView(settingsVM: settingsVM)

@@ -1,3 +1,11 @@
+//
+//  MGMatchTheCardView.swift
+//  Red Mile Grand Game
+//
+//  Created by Dias Atudinov on 05.06.2025.
+//
+
+
 import SwiftUI
 
 struct MGMatchTheCardView: View {
@@ -12,12 +20,12 @@ struct MGMatchTheCardView: View {
     @State private var isWin: Bool = false
     @State private var pauseShow: Bool = false
     private let cardTypes = [
-        "cardFace1MG",
-        "cardFace2MG",
-        "cardFace3MG",
-        "cardFace4MG",
-        "cardFace5MG",
-        "cardFace6MG"]
+        "cardFace1RMG",
+        "cardFace2RMG",
+        "cardFace3RMG",
+        "cardFace4RMG",
+        "cardFace5RMG",
+        "cardFace6RMG"]
     private let gridSize = 4
     
     @State private var counter: Int = 0
@@ -32,26 +40,28 @@ struct MGMatchTheCardView: View {
                     ZStack {
                         
                         HStack {
-                            Image(.numBgMG)
+                            
+                            Image(.timerBgRMG)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: MGDeviceManager.shared.deviceType == .pad ? 180:90)
                                 .opacity(0)
                             
-                            Image(.findCoupleTextMG)
+                            Image(.findCoupleTextRMG)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: MGDeviceManager.shared.deviceType == .pad ? 210:91)
                             
                             ZStack {
-                                Image(.numBgMG)
+                                Image(.timerBgRMG)
                                     .resizable()
                                     .scaledToFit()
                                     .frame(height: MGDeviceManager.shared.deviceType == .pad ? 180:90)
                                 
                                 Text("\(timeLeft)")
-                                    .font(.system(size: MGDeviceManager.shared.deviceType == .pad ? 40:20, weight: .bold))
-                                    .foregroundStyle(.white)
+                                    .font(.system(size: MGDeviceManager.shared.deviceType == .pad ? 60:30, weight: .black))
+                                    .foregroundStyle(.black)
+                                    .offset(x: MGDeviceManager.shared.deviceType == .pad ? -40:-20, y: MGDeviceManager.shared.deviceType == .pad ? 14:7)
                             }
                         }
                         
@@ -60,7 +70,7 @@ struct MGMatchTheCardView: View {
                                 presentationMode.wrappedValue.dismiss()
                                 
                             } label: {
-                                Image(.backIconMG)
+                                Image(.backIconRMG)
                                     .resizable()
                                     .scaledToFit()
                                     .frame(height: MGDeviceManager.shared.deviceType == .pad ? 100:50)
@@ -68,7 +78,6 @@ struct MGMatchTheCardView: View {
                             
                             Spacer()
                             
-                            MGCoinBg()
                         }.padding(.horizontal)
                     }
                     
@@ -97,60 +106,89 @@ struct MGMatchTheCardView: View {
             }
             if gameEnded {
                 if isWin {
-                    ZStack {
-                        VStack() {
-                            Image(.allMatchesTextMG)
+                    VStack {
+                        Spacer()
+                        ZStack {
+                            Image(.winBgRMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 250:125)
                             
-                            Image(.allMatchesImageMG)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 250:125)
-                            
-                            Image(.winTwentyMG)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
-                            Spacer()
-                            Button {
-                                setupGame()
-                            } label: {
-                                Image(.takeTextMG)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
+                            VStack() {
+                                
+                                Spacer()
+                                HStack(spacing: 20) {
+                                    
+                                    Button {
+                                        presentationMode.wrappedValue.dismiss()
+                                    } label: {
+                                        Image(.homeBtnRMG)
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
+                                    }
+                                    
+                                    Button {
+                                        setupGame()
+                                    } label: {
+                                        Image(.backIconRMG)
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:80)
+                                            .scaleEffect(x: -1, y: 1)
+                                    }
+                                    
+                                    Button {
+                                        setupGame()
+                                    } label: {
+                                        Image(.restartBtnRMG)
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
+                                    }
+                                }
+                                
                             }
-                        }
+                        }.frame(height: MGDeviceManager.shared.deviceType == .pad ? 600:300)
+                        Spacer()
                     }
                 } else {
-                    ZStack {
-                        HStack {
-                            VStack {
-                                
-                                Image(.youLoseTextMG)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 240:120)
-                                
-                                Button {
-                                    setupGame()
-                                } label: {
-                                    Image(.retreTextMG)
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
-                                }
-                            }
-                            
-                            Image(.man2ImageMG)
+                    VStack {
+                        Spacer()
+                        ZStack {
+                            Image(.loseBgRMG)
                                 .resizable()
                                 .scaledToFit()
-                                
                             
-                        }
-                    }.ignoresSafeArea()
+                            VStack() {
+                                
+                                Spacer()
+                                HStack(spacing: 20) {
+                                    
+                                    Button {
+                                        presentationMode.wrappedValue.dismiss()
+                                    } label: {
+                                        Image(.homeBtnRMG)
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
+                                    }
+                                    
+                                    
+                                    Button {
+                                        setupGame()
+                                    } label: {
+                                        Image(.restartBtnRMG)
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
+                                    }
+                                }
+                                
+                            }
+                        }.frame(height: MGDeviceManager.shared.deviceType == .pad ? 600:300)
+                        Spacer()
+                    }
+                    
                 }
             }
             
@@ -168,7 +206,7 @@ struct MGMatchTheCardView: View {
         }
        
         .background(
-            Image(.appBgMG)
+            Image(.appBgRMG)
                 .resizable()
                 .edgesIgnoringSafeArea(.all)
                 .scaledToFill()
@@ -259,7 +297,7 @@ struct MGMatchTheCardView: View {
             if cards.allSatisfy({ $0.isMatched || $0.type == "cardSemaphore" }) {
                 message = "Game Over! You found all matches!"
                 gameEnded = true
-                user.updateUserMoney(for: 20)
+                user.updateUserMoney(for: 100)
             }
         }
     }
@@ -290,12 +328,12 @@ struct MGCardView: View {
                 Image(card.type)
                     .resizable()
                     .scaledToFit()
-                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 180:91)
+                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 200:120)
             } else {
-                Image(.cardBackMG)
+                Image(.cardBackRMG)
                     .resizable()
                     .scaledToFit()
-                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 180:91)
+                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 200:120)
             }
         }
     }
