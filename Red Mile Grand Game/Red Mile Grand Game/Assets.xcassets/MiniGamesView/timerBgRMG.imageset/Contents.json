@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "timerBgRMG.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

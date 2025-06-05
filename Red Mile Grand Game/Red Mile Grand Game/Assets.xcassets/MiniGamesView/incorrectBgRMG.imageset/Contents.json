@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "incorrectBgRMG.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

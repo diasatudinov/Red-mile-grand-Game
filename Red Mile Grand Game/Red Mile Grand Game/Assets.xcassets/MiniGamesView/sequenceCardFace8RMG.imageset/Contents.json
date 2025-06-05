@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "sequenceCardFace8RMG.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
