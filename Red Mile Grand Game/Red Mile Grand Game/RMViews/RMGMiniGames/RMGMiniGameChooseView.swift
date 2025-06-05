@@ -1,10 +1,3 @@
-//
-//  RMGMiniGameChooseView.swift
-//  Red Mile Grand Game
-//
-//  Created by Dias Atudinov on 05.06.2025.
-//
-
 import SwiftUI
 
 struct RMGMiniGameChooseView: View {
@@ -45,7 +38,7 @@ struct RMGMiniGameChooseView: View {
                             Image(.game1IconRMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 180:180)
+                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 300:180)
                             
                         }
                         
@@ -55,7 +48,7 @@ struct RMGMiniGameChooseView: View {
                             Image(.game2IconRMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 180:180)
+                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 300:180)
                             
                         }
                         Button {
@@ -64,7 +57,7 @@ struct RMGMiniGameChooseView: View {
                             Image(.game3IconRMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 180:180)
+                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 300:180)
                             
                         }
                         
@@ -74,7 +67,7 @@ struct RMGMiniGameChooseView: View {
                             Image(.game4IconRMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 180:180)
+                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 300:180)
                             
                         }
                     }
@@ -92,16 +85,16 @@ struct RMGMiniGameChooseView: View {
             }
         )
         .fullScreenCover(isPresented: $game1) {
-            MGGuessNumberView()
+            MGMatchTheCardView()
         }
         .fullScreenCover(isPresented: $game2) {
-            MGFindSequenceView()
+            MGGuessNumberView()
         }
         .fullScreenCover(isPresented: $game3) {
-            MGMazeGameView()
+            MGFindSequenceView()
         }
         .fullScreenCover(isPresented: $game4) {
-            MGMatchTheCardView()
+            MGMazeGameView()
             
         }
     }
