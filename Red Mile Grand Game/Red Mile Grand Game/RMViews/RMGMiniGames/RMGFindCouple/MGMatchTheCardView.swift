@@ -1,11 +1,3 @@
-//
-//  MGMatchTheCardView.swift
-//  Red Mile Grand Game
-//
-//  Created by Dias Atudinov on 05.06.2025.
-//
-
-
 import SwiftUI
 
 struct MGMatchTheCardView: View {
