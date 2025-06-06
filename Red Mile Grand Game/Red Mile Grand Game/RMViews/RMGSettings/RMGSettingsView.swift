@@ -3,7 +3,7 @@ import SwiftUI
 struct RMGSettingsView: View {
     @Environment(\.presentationMode) var presentationMode
 
-    @ObservedObject var settingsVM: SettingsViewModelGE
+    @ObservedObject var settingsVM: RMGSettingsViewModel
     var body: some View {
         ZStack {
             
@@ -92,5 +92,5 @@ struct RMGSettingsView: View {
 }
 
 #Preview {
-    RMGSettingsView(settingsVM: SettingsViewModelGE())
+    RMGSettingsView(settingsVM: RMGSettingsViewModel())
 }

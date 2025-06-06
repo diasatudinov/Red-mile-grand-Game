@@ -3,7 +3,7 @@ import SwiftUI
 struct RMGShopView: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject var user = RMGUser.shared
-    @ObservedObject var viewModel: MGShopViewModel
+    @ObservedObject var viewModel: RMGShopViewModel
     
     @State private var currentIndex = 0
     private let itemsPerPage = 2
@@ -90,7 +90,7 @@ struct RMGShopView: View {
 
     }
     
-    @ViewBuilder func shopItem(item: MGItem) -> some View {
+    @ViewBuilder func shopItem(item: RMGItem) -> some View {
         ZStack {
             
             Image(.itemBgRMG)
@@ -166,7 +166,7 @@ struct RMGShopView: View {
         }.frame(height: RMGDeviceManager.shared.deviceType == .pad ? 400:200)
     }
     
-    private var currentItems: [MGItem] {
+    private var currentItems: [RMGItem] {
         let endIndex = min(currentIndex + itemsPerPage, viewModel.shopBgItems.count)
         return Array(viewModel.shopBgItems[currentIndex..<endIndex])
     }
@@ -188,5 +188,5 @@ struct RMGShopView: View {
 }
 
 #Preview {
-    RMGShopView(viewModel: MGShopViewModel())
+    RMGShopView(viewModel: RMGShopViewModel())
 }

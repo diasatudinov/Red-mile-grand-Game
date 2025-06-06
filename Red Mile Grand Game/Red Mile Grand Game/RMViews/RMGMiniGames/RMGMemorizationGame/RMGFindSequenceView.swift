@@ -74,7 +74,7 @@ struct RMGFindSequenceView: View {
                 if gamePhase == .showing {
                     // Full-screen reveal of each card in sequence
                     if let idx = currentStep {
-                        MemorizationCardView(imageName: cardImages[idx])
+                        RMGMemorizationCardView(imageName: cardImages[idx])
                             .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 400:200)
                             .padding()
                             .transition(.opacity)
@@ -83,7 +83,7 @@ struct RMGFindSequenceView: View {
                     // Grid for user interaction
                     LazyVGrid(columns: columns, spacing: 20) {
                         ForEach(0..<cardImages.count, id: \.self) { index in
-                            MemorizationCardView(imageName: cardImages[index])
+                            RMGMemorizationCardView(imageName: cardImages[index])
                                 .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 240:120)
                                 .onTapGesture {
                                     handleTap(on: index)
@@ -248,7 +248,7 @@ struct RMGFindSequenceView: View {
     }
 }
 
-struct MemorizationCardView: View {
+struct RMGMemorizationCardView: View {
     let imageName: String
     var body: some View {
         Image(imageName)
