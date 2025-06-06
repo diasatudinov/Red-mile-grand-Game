@@ -9,7 +9,7 @@ struct RMGGameView: View {
         scene.scaleMode = .resizeFill
         return scene
     }()
-    @ObservedObject var shopVM: MGShopViewModel
+    @ObservedObject var shopVM: RMGShopViewModel
     @State private var powerUse = false
     @State private var isWin = false
     @State private var winner: String? = nil
@@ -18,7 +18,7 @@ struct RMGGameView: View {
     @State var level: Int
     var body: some View {
         ZStack {
-            MGSpriteViewContainer(scene: gameScene, winner: $winner, sendPercent: $sendPercentage, level: level)
+            RMGSpriteViewContainer(scene: gameScene, winner: $winner, sendPercent: $sendPercentage, level: level)
                 .ignoresSafeArea()
             
             VStack {
@@ -219,5 +219,5 @@ struct RMGGameView: View {
 }
 
 #Preview {
-    RMGGameView(shopVM: MGShopViewModel(), level: 0)
+    RMGGameView(shopVM: RMGShopViewModel(), level: 0)
 }

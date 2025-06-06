@@ -2,7 +2,7 @@ import SwiftUI
 
 struct RMGLevelsMainGameView: View {
     @Environment(\.presentationMode) var presentationMode
-    @ObservedObject var shopVM: MGShopViewModel
+    @ObservedObject var shopVM: RMGShopViewModel
 
     @State var openGame = false
     @State var selectedIndex = 0
@@ -84,5 +84,5 @@ struct RMGLevelsMainGameView: View {
 }
 
 #Preview {
-    RMGLevelsMainGameView(shopVM: MGShopViewModel())
+    RMGLevelsMainGameView(shopVM: RMGShopViewModel())
 }

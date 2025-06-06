@@ -10,9 +10,9 @@ struct RMGMenuView: View {
     @State private var showDailyTask = false
     
     @StateObject var achievementVM = RMGAchievementsViewModel()
-    @StateObject var settingsVM = SettingsViewModelGE()
+    @StateObject var settingsVM = RMGSettingsViewModel()
     @StateObject var calendarVM = RMGCalendarViewModel()
-    @StateObject var shopVM = MGShopViewModel()
+    @StateObject var shopVM = RMGShopViewModel()
     
     var body: some View {
         
@@ -140,10 +140,10 @@ struct RMGMenuView: View {
             RMGAchievementsView(viewModel: achievementVM)
         }
         .fullScreenCover(isPresented: $showShop) {
-            MGShopView(viewModel: shopVM)
+            RMGShopView(viewModel: shopVM)
         }
         .fullScreenCover(isPresented: $showSettings) {
-            SettingsView(settingsVM: settingsVM)
+            RMGSettingsView(settingsVM: settingsVM)
         }
         .fullScreenCover(isPresented: $showDailyTask) {
             RMGDailyTaskView()
