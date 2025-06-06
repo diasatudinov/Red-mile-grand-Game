@@ -2,9 +2,9 @@ import SwiftUI
 import SpriteKit
 
 
-struct MGMazeViewContainer: UIViewRepresentable {
-    @StateObject var user = MGUser.shared
-    var scene: MGMazeScene
+struct RMGMazeViewContainer: UIViewRepresentable {
+    @StateObject var user = RMGUser.shared
+    var scene: RMGMazeScene
     @Binding var isWin: Bool
     func makeUIView(context: Context) -> SKView {
         let skView = SKView(frame: UIScreen.main.bounds)

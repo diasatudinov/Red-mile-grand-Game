@@ -1,7 +1,7 @@
 import SwiftUI
 
-struct MGAchievementsView: View {
-    @StateObject var user = MGUser.shared
+struct RMGAchievementsView: View {
+    @StateObject var user = RMGUser.shared
     @Environment(\.presentationMode) var presentationMode
 
     @ObservedObject var viewModel: MGAchievementsViewModel
@@ -19,18 +19,18 @@ struct MGAchievementsView: View {
                                 Image(.backIconRMG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:70)
+                                    .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 120:70)
                             }
                             
-                            MGCoinBg().opacity(0)
+                            RMGCoinBg().opacity(0)
                         }
                         Spacer()
                         Image(.achiTextRMG)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
+                            .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 120:60)
                         Spacer()
-                        MGCoinBg()
+                        RMGCoinBg()
                     }.padding([.top])
                 }
                 
@@ -72,10 +72,10 @@ struct MGAchievementsView: View {
                     Image(.stickIconRMG)
                         .resizable()
                         .scaledToFit()
-                        .frame(height: MGDeviceManager.shared.deviceType == .pad ? 100:50)
+                        .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 100:50)
                 
             }
-        }.frame(height: MGDeviceManager.shared.deviceType == .pad ? 320:160)
+        }.frame(height: RMGDeviceManager.shared.deviceType == .pad ? 320:160)
             .opacity(item.isAchieved ? 1:0.5)
             .offset(y: offsetConfig(item: item))
     }
@@ -102,5 +102,5 @@ struct MGAchievementsView: View {
 
 
 #Preview {
-    MGAchievementsView(viewModel: MGAchievementsViewModel())
+    RMGAchievementsView(viewModel: MGAchievementsViewModel())
 }

@@ -1,7 +1,7 @@
 import UIKit
 
-class MGDeviceManager {
-    static let shared = MGDeviceManager()
+class RMGDeviceManager {
+    static let shared = RMGDeviceManager()
     
     var deviceType: UIUserInterfaceIdiom
     

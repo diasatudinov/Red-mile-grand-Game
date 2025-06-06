@@ -1,9 +1,9 @@
 import SwiftUI
 
-struct MGMatchTheCardView: View {
+struct RMGMatchTheCardView: View {
     @Environment(\.presentationMode) var presentationMode
     
-    @StateObject var user = MGUser.shared
+    @StateObject var user = RMGUser.shared
     
     @State private var cards: [MGCard] = []
     @State private var selectedCards: [MGCard] = []
@@ -36,24 +36,24 @@ struct MGMatchTheCardView: View {
                             Image(.timerBgRMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 180:90)
+                                .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 180:90)
                                 .opacity(0)
                             
                             Image(.findCoupleTextRMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 210:91)
+                                .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 210:91)
                             
                             ZStack {
                                 Image(.timerBgRMG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 180:90)
+                                    .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 180:90)
                                 
                                 Text("\(timeLeft)")
-                                    .font(.system(size: MGDeviceManager.shared.deviceType == .pad ? 60:30, weight: .black))
+                                    .font(.system(size: RMGDeviceManager.shared.deviceType == .pad ? 60:30, weight: .black))
                                     .foregroundStyle(.black)
-                                    .offset(x: MGDeviceManager.shared.deviceType == .pad ? -40:-20, y: MGDeviceManager.shared.deviceType == .pad ? 14:7)
+                                    .offset(x: RMGDeviceManager.shared.deviceType == .pad ? -40:-20, y: RMGDeviceManager.shared.deviceType == .pad ? 14:7)
                             }
                         }
                         
@@ -65,7 +65,7 @@ struct MGMatchTheCardView: View {
                                 Image(.backIconRMG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 100:50)
+                                    .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 100:50)
                             }
                             
                             Spacer()
@@ -116,7 +116,7 @@ struct MGMatchTheCardView: View {
                                         Image(.homeBtnRMG)
                                             .resizable()
                                             .scaledToFit()
-                                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
+                                            .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 120:60)
                                     }
                                     
                                     Button {
@@ -125,7 +125,7 @@ struct MGMatchTheCardView: View {
                                         Image(.backIconRMG)
                                             .resizable()
                                             .scaledToFit()
-                                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:80)
+                                            .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 120:80)
                                             .scaleEffect(x: -1, y: 1)
                                     }
                                     
@@ -135,12 +135,12 @@ struct MGMatchTheCardView: View {
                                         Image(.restartBtnRMG)
                                             .resizable()
                                             .scaledToFit()
-                                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
+                                            .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 120:60)
                                     }
                                 }
                                 
                             }
-                        }.frame(height: MGDeviceManager.shared.deviceType == .pad ? 600:300)
+                        }.frame(height: RMGDeviceManager.shared.deviceType == .pad ? 600:300)
                         Spacer()
                     }
                 } else {
@@ -162,7 +162,7 @@ struct MGMatchTheCardView: View {
                                         Image(.homeBtnRMG)
                                             .resizable()
                                             .scaledToFit()
-                                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
+                                            .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 120:60)
                                     }
                                     
                                     
@@ -172,12 +172,12 @@ struct MGMatchTheCardView: View {
                                         Image(.restartBtnRMG)
                                             .resizable()
                                             .scaledToFit()
-                                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
+                                            .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 120:60)
                                     }
                                 }
                                 
                             }
-                        }.frame(height: MGDeviceManager.shared.deviceType == .pad ? 600:300)
+                        }.frame(height: RMGDeviceManager.shared.deviceType == .pad ? 600:300)
                         Spacer()
                     }
                     
@@ -308,7 +308,7 @@ struct MGMatchTheCardView: View {
 }
 
 #Preview {
-    MGMatchTheCardView()
+    RMGMatchTheCardView()
 }
 
 struct MGCardView: View {
@@ -320,12 +320,12 @@ struct MGCardView: View {
                 Image(card.type)
                     .resizable()
                     .scaledToFit()
-                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 200:120)
+                    .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 200:120)
             } else {
                 Image(.cardBackRMG)
                     .resizable()
                     .scaledToFit()
-                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 200:120)
+                    .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 200:120)
             }
         }
     }

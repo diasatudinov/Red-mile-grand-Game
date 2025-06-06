@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct MGDailyTaskView: View {
+struct RMGDailyTaskView: View {
     @Environment(\.presentationMode) var presentationMode
     @State var task1Done = false
     @State var task2Done = false
@@ -27,10 +27,10 @@ struct MGDailyTaskView: View {
                                 Image(.redStickIconRMG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 90:50)
+                                    .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 90:50)
                             }
                         }
-                    }.frame(width: MGDeviceManager.shared.deviceType == .pad ? 600:350)
+                    }.frame(width: RMGDeviceManager.shared.deviceType == .pad ? 600:350)
                         .onTapGesture {
                             task1Done.toggle()
                         }
@@ -48,10 +48,10 @@ struct MGDailyTaskView: View {
                                 Image(.redStickIconRMG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 90:50)
+                                    .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 90:50)
                             }
                         }
-                    }.frame(width: MGDeviceManager.shared.deviceType == .pad ? 600:350)
+                    }.frame(width: RMGDeviceManager.shared.deviceType == .pad ? 600:350)
                         .onTapGesture {
                             task2Done.toggle()
                         }
@@ -69,17 +69,17 @@ struct MGDailyTaskView: View {
                                 Image(.redStickIconRMG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 90:50)
+                                    .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 90:50)
                             }
                         }
-                    }.frame(width: MGDeviceManager.shared.deviceType == .pad ? 600:350)
+                    }.frame(width: RMGDeviceManager.shared.deviceType == .pad ? 600:350)
                         .onTapGesture {
                             task3Done.toggle()
                         }
                     
                 }.padding(.top, 20)
                 
-            }.frame(height: MGDeviceManager.shared.deviceType == .pad ? 600:330)
+            }.frame(height: RMGDeviceManager.shared.deviceType == .pad ? 600:330)
                         
             VStack {
                 HStack {
@@ -92,16 +92,16 @@ struct MGDailyTaskView: View {
                                 Image(.backIconRMG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:70)
+                                    .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 120:70)
                             }
                             
-                            MGCoinBg().opacity(0)
+                            RMGCoinBg().opacity(0)
                         }
                         
                         Spacer()
                         
                         
-                        MGCoinBg()
+                        RMGCoinBg()
                     }.padding(.top)
                 }
                 
@@ -126,5 +126,5 @@ struct MGDailyTaskView: View {
 
 
 #Preview {
-    MGDailyTaskView()
+    RMGDailyTaskView()
 }

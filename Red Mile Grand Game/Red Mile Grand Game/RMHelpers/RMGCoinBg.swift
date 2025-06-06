@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct MGCoinBg: View {
+struct RMGCoinBg: View {
     @StateObject var user = MGUser.shared
     var body: some View {
         ZStack {
@@ -22,5 +22,5 @@ struct MGCoinBg: View {
 }
 
 #Preview {
-    MGCoinBg()
+    RMGCoinBg()
 }

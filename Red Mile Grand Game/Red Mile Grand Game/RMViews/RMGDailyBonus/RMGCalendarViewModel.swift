@@ -1,7 +1,7 @@
 import SwiftUI
 
 
-class CalendarViewModel: ObservableObject {
+class RMGCalendarViewModel: ObservableObject {
     
     @Published var bonuses: [Bonus] = [
         Bonus(day: 1, amount: 50, isCollected: false),

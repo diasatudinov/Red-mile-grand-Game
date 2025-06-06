@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct RMSplashScreen: View {
+struct RMGSplashScreen: View {
     @State private var scale: CGFloat = 1.0
     @State private var progress: CGFloat = 0.0
     @State private var timer: Timer?
@@ -79,5 +79,5 @@ struct RMSplashScreen: View {
 
 
 #Preview {
-    RMSplashScreen()
+    RMGSplashScreen()
 }

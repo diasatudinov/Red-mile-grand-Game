@@ -1,8 +1,8 @@
 import SwiftUI
 
-class MGUser: ObservableObject {
+class RMGUser: ObservableObject {
     
-    static let shared = MGUser()
+    static let shared = RMGUser()
     
     @AppStorage("achievement") var achievementNum: Int = 0
     @AppStorage("money") var storedMoney: Int = 100

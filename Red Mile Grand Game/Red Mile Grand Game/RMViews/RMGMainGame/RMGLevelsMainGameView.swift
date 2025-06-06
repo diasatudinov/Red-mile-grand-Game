@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct MGLevelsMainGameView: View {
+struct RMGLevelsMainGameView: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var shopVM: MGShopViewModel
 
@@ -16,7 +16,7 @@ struct MGLevelsMainGameView: View {
                         Image(.levelsTextRMG)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 180:90)
+                            .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 180:90)
                     }
                     HStack(alignment: .top) {
                         Button {
@@ -26,10 +26,10 @@ struct MGLevelsMainGameView: View {
                             Image(.backIconRMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 100:50)
+                                .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 100:50)
                         }
                         Spacer()
-                        MGCoinBg()
+                        RMGCoinBg()
                     }.padding([.horizontal, .top])
                     
                 }
@@ -47,10 +47,10 @@ struct MGLevelsMainGameView: View {
                                 Image(.levelNumBgRMG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 150:120)
+                                    .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 150:120)
                                 
                                 Text("\(index + 1)")
-                                    .font(.system(size: MGDeviceManager.shared.deviceType == .pad ? 80:40, weight: .semibold))
+                                    .font(.system(size: RMGDeviceManager.shared.deviceType == .pad ? 80:40, weight: .semibold))
                                     .foregroundStyle(.red)
                             }
                             .onTapGesture {
@@ -61,7 +61,7 @@ struct MGLevelsMainGameView: View {
                                 
                             }
                         }
-                    }.frame(width: MGDeviceManager.shared.deviceType == .pad ? 720:610)
+                    }.frame(width: RMGDeviceManager.shared.deviceType == .pad ? 720:610)
                     
                 }
                 Spacer()
@@ -77,12 +77,12 @@ struct MGLevelsMainGameView: View {
             }
         )
         .fullScreenCover(isPresented: $openGame) {
-             MGGameView(shopVM: shopVM, level: selectedIndex)
+             RMGGameView(shopVM: shopVM, level: selectedIndex)
         }
     }
 
 }
 
 #Preview {
-    MGLevelsMainGameView(shopVM: MGShopViewModel())
+    RMGLevelsMainGameView(shopVM: MGShopViewModel())
 }

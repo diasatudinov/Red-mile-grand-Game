@@ -1,7 +1,7 @@
 import SwiftUI
 
 
-class MGShopViewModel: ObservableObject {
+class RMGShopViewModel: ObservableObject {
     @Published var shopBgItems: [MGItem] = [
         
         MGItem(name: "bg1", image: "gameRealBg1RMG", icon: "gameBg1RMG", price: 500),

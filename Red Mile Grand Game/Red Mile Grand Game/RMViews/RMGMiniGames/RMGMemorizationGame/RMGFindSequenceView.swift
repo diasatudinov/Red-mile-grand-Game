@@ -1,7 +1,7 @@
 import SwiftUI
 
-struct MGFindSequenceView: View {
-    @StateObject var user = MGUser.shared
+struct RMGFindSequenceView: View {
+    @StateObject var user = RMGUser.shared
     @Environment(\.presentationMode) var presentationMode
     
     let cardImages = [
@@ -43,7 +43,7 @@ struct MGFindSequenceView: View {
                         Image(.findSequenceGameTextRMG)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 100:50)
+                            .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 100:50)
                     }
                     HStack {
                         VStack {
@@ -56,13 +56,13 @@ struct MGFindSequenceView: View {
                                         Image(.backIconRMG)
                                             .resizable()
                                             .scaledToFit()
-                                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 100:50)
+                                            .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 100:50)
                                     }
                                     
                                 }
                                 Spacer()
                                 
-                                MGCoinBg()
+                                RMGCoinBg()
                             }.padding([.horizontal, .top])
                         }
                     }
@@ -75,7 +75,7 @@ struct MGFindSequenceView: View {
                     // Full-screen reveal of each card in sequence
                     if let idx = currentStep {
                         MemorizationCardView(imageName: cardImages[idx])
-                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 400:200)
+                            .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 400:200)
                             .padding()
                             .transition(.opacity)
                     }
@@ -84,12 +84,12 @@ struct MGFindSequenceView: View {
                     LazyVGrid(columns: columns, spacing: 20) {
                         ForEach(0..<cardImages.count, id: \.self) { index in
                             MemorizationCardView(imageName: cardImages[index])
-                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 240:120)
+                                .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 240:120)
                                 .onTapGesture {
                                     handleTap(on: index)
                                 }
                         }
-                    }.frame(width: MGDeviceManager.shared.deviceType == .pad ? 900:450)
+                    }.frame(width: RMGDeviceManager.shared.deviceType == .pad ? 900:450)
                     
                     
                     
@@ -119,7 +119,7 @@ struct MGFindSequenceView: View {
                                     Image(.homeBtnRMG)
                                         .resizable()
                                         .scaledToFit()
-                                        .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
+                                        .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 120:60)
                                 }
                                 
                                 Button {
@@ -128,7 +128,7 @@ struct MGFindSequenceView: View {
                                     Image(.backIconRMG)
                                         .resizable()
                                         .scaledToFit()
-                                        .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:80)
+                                        .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 120:80)
                                         .scaleEffect(x: -1, y: 1)
                                 }
                                 
@@ -138,12 +138,12 @@ struct MGFindSequenceView: View {
                                     Image(.restartBtnRMG)
                                         .resizable()
                                         .scaledToFit()
-                                        .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
+                                        .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 120:60)
                                 }
                             }
                             
                         }
-                    }.frame(height: MGDeviceManager.shared.deviceType == .pad ? 600:300)
+                    }.frame(height: RMGDeviceManager.shared.deviceType == .pad ? 600:300)
 
                 } else {
                     ZStack {
@@ -162,7 +162,7 @@ struct MGFindSequenceView: View {
                                     Image(.homeBtnRMG)
                                         .resizable()
                                         .scaledToFit()
-                                        .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
+                                        .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 120:60)
                                 }
                                 
                                 
@@ -172,12 +172,12 @@ struct MGFindSequenceView: View {
                                     Image(.restartBtnRMG)
                                         .resizable()
                                         .scaledToFit()
-                                        .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
+                                        .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 120:60)
                                 }
                             }
                             
                         }
-                    }.frame(height: MGDeviceManager.shared.deviceType == .pad ? 600:300)
+                    }.frame(height: RMGDeviceManager.shared.deviceType == .pad ? 600:300)
 
                 }
                 
@@ -262,5 +262,5 @@ struct MemorizationCardView: View {
 
 
 #Preview {
-    MGFindSequenceView()
+    RMGFindSequenceView()
 }

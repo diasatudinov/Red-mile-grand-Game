@@ -1,8 +1,8 @@
 import SwiftUI
 
-struct MGShopView: View {
+struct RMGShopView: View {
     @Environment(\.presentationMode) var presentationMode
-    @StateObject var user = MGUser.shared
+    @StateObject var user = RMGUser.shared
     @ObservedObject var viewModel: MGShopViewModel
     
     @State private var currentIndex = 0
@@ -31,7 +31,7 @@ struct MGShopView: View {
                                 Image(.arrowRMG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 150:80)
+                                    .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 150:80)
                                     .scaleEffect(x: -1, y: 1)
                             }
                             .disabled(currentIndex == 0)
@@ -42,14 +42,14 @@ struct MGShopView: View {
                                 Image(.arrowRMG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 150:80)
+                                    .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 150:80)
                             }
                             .disabled(currentIndex + itemsPerPage >= viewModel.shopBgItems.count)
                         }
-                    }.frame(width: MGDeviceManager.shared.deviceType == .pad ? 1000:500)
+                    }.frame(width: RMGDeviceManager.shared.deviceType == .pad ? 1000:500)
                     
                     
-                }.frame(height: MGDeviceManager.shared.deviceType == .pad ? 600:300)
+                }.frame(height: RMGDeviceManager.shared.deviceType == .pad ? 600:300)
             }
             
             VStack {
@@ -63,15 +63,15 @@ struct MGShopView: View {
                                 Image(.backIconRMG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 100:50)
+                                    .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 100:50)
                             }
                             
-                            MGCoinBg().opacity(0)
+                            RMGCoinBg().opacity(0)
                         }
                         
                         Spacer()
                         
-                        MGCoinBg()
+                        RMGCoinBg()
                         
                     }.padding([.top])
                 }
@@ -101,14 +101,14 @@ struct MGShopView: View {
                 Image(item.icon)
                     .resizable()
                     .scaledToFit()
-                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 320:160)
-                    .offset(y: MGDeviceManager.shared.deviceType == .pad ? -14:-7)
+                    .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 320:160)
+                    .offset(y: RMGDeviceManager.shared.deviceType == .pad ? -14:-7)
             } else {
                 Image("\(item.icon)Off")
                     .resizable()
                     .scaledToFit()
-                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 320:160)
-                    .offset(y: MGDeviceManager.shared.deviceType == .pad ? -14:-7)
+                    .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 320:160)
+                    .offset(y: RMGDeviceManager.shared.deviceType == .pad ? -14:-7)
             }
             VStack {
                 Spacer()
@@ -163,7 +163,7 @@ struct MGShopView: View {
             }
             
             
-        }.frame(height: MGDeviceManager.shared.deviceType == .pad ? 400:200)
+        }.frame(height: RMGDeviceManager.shared.deviceType == .pad ? 400:200)
     }
     
     private var currentItems: [MGItem] {
@@ -188,5 +188,5 @@ struct MGShopView: View {
 }
 
 #Preview {
-    MGShopView(viewModel: MGShopViewModel())
+    RMGShopView(viewModel: MGShopViewModel())
 }

@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct SettingsView: View {
+struct RMGSettingsView: View {
     @Environment(\.presentationMode) var presentationMode
 
     @ObservedObject var settingsVM: SettingsViewModelGE
@@ -16,12 +16,12 @@ struct SettingsView: View {
                         Image(.soundIconRMG)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 160:80)
+                            .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 160:80)
                         VStack {
                             Image(.soundTextRMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 20:10)
+                                .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 20:10)
                             Button {
                                 withAnimation {
                                     settingsVM.soundEnabled.toggle()
@@ -31,7 +31,7 @@ struct SettingsView: View {
                                 Image(settingsVM.soundEnabled ? .onIconRMG:.offIconRMG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 80:40)
+                                    .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 80:40)
                             }
                         }
                     }
@@ -40,12 +40,12 @@ struct SettingsView: View {
                         Image(.musicIconRMG)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 160:80)
+                            .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 160:80)
                         VStack {
                             Image(.musicTextRMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 20:10)
+                                .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 20:10)
                             Button {
                                 withAnimation {
                                     settingsVM.musicEnabled.toggle()
@@ -55,12 +55,12 @@ struct SettingsView: View {
                                 Image(settingsVM.musicEnabled ? .onIconRMG:.offIconRMG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 80:40)
+                                    .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 80:40)
                             }
                         }
                     }
                 }
-            }.frame(height: MGDeviceManager.shared.deviceType == .pad ? 650:350)
+            }.frame(height: RMGDeviceManager.shared.deviceType == .pad ? 650:350)
             
             VStack {
                 HStack {
@@ -72,7 +72,7 @@ struct SettingsView: View {
                             Image(.backIconRMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 150:75)
+                                .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 150:75)
                         }
                         Spacer()
                        
@@ -92,5 +92,5 @@ struct SettingsView: View {
 }
 
 #Preview {
-    SettingsView(settingsVM: SettingsViewModelGE())
+    RMGSettingsView(settingsVM: SettingsViewModelGE())
 }

@@ -1,7 +1,7 @@
 import SwiftUI
 import SpriteKit
 
-struct MGMazeGameView: View {
+struct RMGMazeGameView: View {
     @Environment(\.presentationMode) var presentationMode
     @State var isWin = false
     @State private var gameScene: MGMazeScene = {
@@ -24,7 +24,7 @@ struct MGMazeGameView: View {
                         Image(.mazeTextRMG)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 100:50)
+                            .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 100:50)
                     }
                     
                     HStack(alignment: .top) {
@@ -35,12 +35,12 @@ struct MGMazeGameView: View {
                             Image(.backIconRMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 100:50)
+                                .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 100:50)
                         }
                         
                         Spacer()
                         
-                        MGCoinBg()
+                        RMGCoinBg()
                         
                     }.padding([.top])
                     
@@ -59,16 +59,16 @@ struct MGMazeGameView: View {
                         Image(.arrowUpRMG)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 130:65)
+                            .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 130:65)
                     }
-                    HStack(spacing: MGDeviceManager.shared.deviceType == .pad ? 60:30) {
+                    HStack(spacing: RMGDeviceManager.shared.deviceType == .pad ? 60:30) {
                         Button {
                             gameScene.moveLeft()
                         } label: {
                             Image(.arrowUpRMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 130:65)
+                                .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 130:65)
                                 .rotationEffect(.degrees(90))
                                 .scaleEffect(x: -1, y: 1)
                         }
@@ -79,7 +79,7 @@ struct MGMazeGameView: View {
                             Image(.arrowUpRMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 130:65)
+                                .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 130:65)
                                 .rotationEffect(.degrees(90))
                         }
                     }
@@ -90,7 +90,7 @@ struct MGMazeGameView: View {
                         Image(.arrowUpRMG)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 130:65)
+                            .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 130:65)
                             .scaleEffect(x: 1, y: -1)
                     }
                     Spacer()
@@ -116,7 +116,7 @@ struct MGMazeGameView: View {
                                 Image(.homeBtnRMG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
+                                    .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 120:60)
                             }
                             
                             Button {
@@ -126,7 +126,7 @@ struct MGMazeGameView: View {
                                 Image(.backIconRMG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:80)
+                                    .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 120:80)
                                     .scaleEffect(x: -1, y: 1)
                             }
                             
@@ -137,13 +137,13 @@ struct MGMazeGameView: View {
                                 Image(.restartBtnRMG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
+                                    .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 120:60)
                             }
                         }
                     }
                     
                     
-                }.frame(height: MGDeviceManager.shared.deviceType == .pad ? 500:250)
+                }.frame(height: RMGDeviceManager.shared.deviceType == .pad ? 500:250)
 
                 
             }
@@ -160,5 +160,5 @@ struct MGMazeGameView: View {
 }
 
 #Preview {
-    MGMazeGameView()
+    RMGMazeGameView()
 }

@@ -1,8 +1,8 @@
 import SwiftUI
 
-struct CalendarView: View {
+struct RMGCalendarView: View {
     @Environment(\.presentationMode) var presentationMode
-    @StateObject var user = MGUser.shared
+    @StateObject var user = RMGUser.shared
     @ObservedObject var viewModel: CalendarViewModel
     @State private var timer: Timer?
     
@@ -26,7 +26,7 @@ struct CalendarView: View {
                         .resizable()
                         .scaledToFit()
                     HStack {
-                        LazyVGrid(columns: columns, spacing: MGDeviceManager.shared.deviceType == .pad ? 0:0) {
+                        LazyVGrid(columns: columns, spacing: RMGDeviceManager.shared.deviceType == .pad ? 0:0) {
                             ForEach(viewModel.bonuses, id: \.self) { bonus in
                                 VStack(spacing: 0) {
                                         
@@ -35,7 +35,7 @@ struct CalendarView: View {
                                             Image(bonus.isCollected ? .openedBoxBgRMG:.closedBoxBgRMG)
                                                 .resizable()
                                                 .scaledToFit()
-                                                .frame(width: MGDeviceManager.shared.deviceType == .pad ? 170:95,height: MGDeviceManager.shared.deviceType == .pad ? 170:95)
+                                                .frame(width: RMGDeviceManager.shared.deviceType == .pad ? 170:95,height: RMGDeviceManager.shared.deviceType == .pad ? 170:95)
                                             
                                             Text("\(bonus.day)")
                                                 .font(.system(size: 30, weight: .black))
@@ -49,8 +49,8 @@ struct CalendarView: View {
                                                         Image(.redStickIconRMG)
                                                             .resizable()
                                                             .scaledToFit()
-                                                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 80:40)
-                                                            .offset(x: MGDeviceManager.shared.deviceType == .pad ? 20:10, y: MGDeviceManager.shared.deviceType == .pad ? 20:10)
+                                                            .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 80:40)
+                                                            .offset(x: RMGDeviceManager.shared.deviceType == .pad ? 20:10, y: RMGDeviceManager.shared.deviceType == .pad ? 20:10)
                                                     }
                                                 }.offset(x: -7, y: -7)
                                             } else {
@@ -70,7 +70,7 @@ struct CalendarView: View {
                                                                 Image(.getBtnRMG)
                                                                     .resizable()
                                                                     .scaledToFit()
-                                                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 80:40)
+                                                                    .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 80:40)
                                                             }
                                                         }
                                                         
@@ -81,19 +81,19 @@ struct CalendarView: View {
                                                     Image(.lockIconRMG)
                                                         .resizable()
                                                         .scaledToFit()
-                                                        .frame(height: MGDeviceManager.shared.deviceType == .pad ? 100:50)
+                                                        .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 100:50)
                                                 }
                                             }
                                             
-                                        }.frame(width: MGDeviceManager.shared.deviceType == .pad ? 200:100,height: MGDeviceManager.shared.deviceType == .pad ? 200:100)
+                                        }.frame(width: RMGDeviceManager.shared.deviceType == .pad ? 200:100,height: RMGDeviceManager.shared.deviceType == .pad ? 200:100)
                                 }.offset(x: bonus.day > 4 ? 50:0)
                                 
                                 
                             }
-                        }.frame(width: MGDeviceManager.shared.deviceType == .pad ? 800:400)
+                        }.frame(width: RMGDeviceManager.shared.deviceType == .pad ? 800:400)
                         
                         
-                    }.padding(.top, MGDeviceManager.shared.deviceType == .pad ? 96:48)
+                    }.padding(.top, RMGDeviceManager.shared.deviceType == .pad ? 96:48)
                 }
                 
             
@@ -109,10 +109,10 @@ struct CalendarView: View {
                             Image(.backIconRMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 150:75)
+                                .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 150:75)
                         }
                         Spacer()
-                        MGCoinBg()
+                        RMGCoinBg()
                     }.padding([.horizontal, .top])
                 }
                 Spacer()
@@ -180,5 +180,5 @@ struct CalendarView: View {
 }
 
 #Preview {
-    CalendarView(viewModel: CalendarViewModel())
+    RMGCalendarView(viewModel: CalendarViewModel())
 }

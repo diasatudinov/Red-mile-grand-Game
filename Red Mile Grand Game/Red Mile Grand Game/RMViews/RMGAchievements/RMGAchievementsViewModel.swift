@@ -1,6 +1,6 @@
 import SwiftUI
 
-class MGAchievementsViewModel: ObservableObject {
+class RMGAchievementsViewModel: ObservableObject {
     
     @Published var achievements: [MGAchievement] = [
         MGAchievement(image: "achieve1ImageRMG", isAchieved: false),

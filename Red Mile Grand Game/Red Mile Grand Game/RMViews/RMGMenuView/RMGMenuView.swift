@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct RMMenuView: View {
+struct RMGMenuView: View {
     @State private var showGame = false
     @State private var showShop = false
     @State private var showAchievement = false
@@ -9,9 +9,9 @@ struct RMMenuView: View {
     @State private var showCalendar = false
     @State private var showDailyTask = false
     
-    @StateObject var achievementVM = MGAchievementsViewModel()
+    @StateObject var achievementVM = RMGAchievementsViewModel()
     @StateObject var settingsVM = SettingsViewModelGE()
-    @StateObject var calendarVM = CalendarViewModel()
+    @StateObject var calendarVM = RMGCalendarViewModel()
     @StateObject var shopVM = MGShopViewModel()
     
     var body: some View {
@@ -20,7 +20,7 @@ struct RMMenuView: View {
             
             VStack(spacing: 0) {
                 HStack(alignment: .center) {
-                    MGCoinBg()
+                    RMGCoinBg()
                         
                     Spacer()
                     
@@ -30,7 +30,7 @@ struct RMMenuView: View {
                             Image(.settingsIconRMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:70)
+                                .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 120:70)
                         }
                     
                     
@@ -47,7 +47,7 @@ struct RMMenuView: View {
                             Image(.shopIconRMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 178:100)
+                                .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 178:100)
                         }
                         
                         
@@ -58,13 +58,13 @@ struct RMMenuView: View {
                                 Image(.achievementsIconRMG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 178:100)
+                                    .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 178:100)
                             }
                             
                             Image(.miniGamesRMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 178:100)
+                                .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 178:100)
                                 .opacity(0)
                         }
                     }
@@ -76,7 +76,7 @@ struct RMMenuView: View {
                         Image(.playIconRMG)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 240:150)
+                            .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 240:150)
                     }
                     
                     Spacer()
@@ -91,7 +91,7 @@ struct RMMenuView: View {
                             Image(.dailyBonusRMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 178:100)
+                                .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 178:100)
                         }
                         
                         HStack {
@@ -101,7 +101,7 @@ struct RMMenuView: View {
                                 Image(.miniGamesRMG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 178:100)
+                                    .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 178:100)
                             }
                             
                             Button {
@@ -110,7 +110,7 @@ struct RMMenuView: View {
                                 Image(.dailyTaskIconRMG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 178:100)
+                                    .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 178:100)
                             }
                         }
                     }
@@ -131,13 +131,13 @@ struct RMMenuView: View {
             }
         )
         .fullScreenCover(isPresented: $showGame) {
-            MGLevelsMainGameView(shopVM: shopVM)
+            RMGLevelsMainGameView(shopVM: shopVM)
         }
         .fullScreenCover(isPresented: $showMiniGames) {
             RMGMiniGameChooseView()
         }
         .fullScreenCover(isPresented: $showAchievement) {
-            MGAchievementsView(viewModel: achievementVM)
+            RMGAchievementsView(viewModel: achievementVM)
         }
         .fullScreenCover(isPresented: $showShop) {
             MGShopView(viewModel: shopVM)
@@ -146,19 +146,16 @@ struct RMMenuView: View {
             SettingsView(settingsVM: settingsVM)
         }
         .fullScreenCover(isPresented: $showDailyTask) {
-            MGDailyTaskView()
+            RMGDailyTaskView()
         }
         .fullScreenCover(isPresented: $showCalendar) {
-            CalendarView(viewModel: calendarVM)
+            RMGCalendarView(viewModel: calendarVM)
         }
-        
-        
-        
         
     }
     
 }
 
 #Preview {
-    RMMenuView()
+    RMGMenuView()
 }

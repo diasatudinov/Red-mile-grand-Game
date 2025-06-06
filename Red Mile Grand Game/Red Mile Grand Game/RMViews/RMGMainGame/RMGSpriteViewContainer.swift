@@ -2,9 +2,9 @@ import SwiftUI
 import SpriteKit
 
 
-struct MGSpriteViewContainer: UIViewRepresentable {
-    @StateObject var user = MGUser.shared
-    var scene: MGGameScene
+struct RMGSpriteViewContainer: UIViewRepresentable {
+    @StateObject var user = RMGUser.shared
+    var scene: RMGGameScene
     @Binding var winner: String?
     @Binding var sendPercent: CGFloat
     var level: Int

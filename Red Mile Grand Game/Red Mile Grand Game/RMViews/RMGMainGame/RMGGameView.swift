@@ -1,11 +1,11 @@
 import SwiftUI
 import SpriteKit
 
-struct MGGameView: View {
+struct RMGGameView: View {
     @Environment(\.presentationMode) var presentationMode
    
-    @State var gameScene: MGGameScene = {
-        let scene = MGGameScene(size: UIScreen.main.bounds.size)
+    @State var gameScene: RMGGameScene = {
+        let scene = RMGGameScene(size: UIScreen.main.bounds.size)
         scene.scaleMode = .resizeFill
         return scene
     }()
@@ -31,7 +31,7 @@ struct MGGameView: View {
                             Image(.backIconRMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 100:50)
+                                .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 100:50)
                         }
                         Spacer()
                         
@@ -54,10 +54,10 @@ struct MGGameView: View {
                                 Image(.persentBgRMG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 150:80)
+                                    .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 150:80)
                                 
                                 Text("Max")
-                                    .font(.system(size: MGDeviceManager.shared.deviceType == .pad ? 35:20, weight: .semibold))
+                                    .font(.system(size: RMGDeviceManager.shared.deviceType == .pad ? 35:20, weight: .semibold))
                                     .foregroundStyle(.black)
                             }
                         }
@@ -69,10 +69,10 @@ struct MGGameView: View {
                                 Image(.persentBgRMG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 150:80)
+                                    .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 150:80)
                                 
                                 Text("75%")
-                                    .font(.system(size: MGDeviceManager.shared.deviceType == .pad ? 35:20, weight: .semibold))
+                                    .font(.system(size: RMGDeviceManager.shared.deviceType == .pad ? 35:20, weight: .semibold))
                                     .foregroundStyle(.black)
                             }
                         }
@@ -84,10 +84,10 @@ struct MGGameView: View {
                                 Image(.persentBgRMG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 150:80)
+                                    .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 150:80)
                                 
                                 Text("50%")
-                                    .font(.system(size: MGDeviceManager.shared.deviceType == .pad ? 35:20, weight: .semibold))
+                                    .font(.system(size: RMGDeviceManager.shared.deviceType == .pad ? 35:20, weight: .semibold))
                                     .foregroundStyle(.black)
                             }
                         }
@@ -99,10 +99,10 @@ struct MGGameView: View {
                                 Image(.persentBgRMG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 150:80)
+                                    .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 150:80)
                                 
                                 Text("25%")
-                                    .font(.system(size: MGDeviceManager.shared.deviceType == .pad ? 35:20, weight: .semibold))
+                                    .font(.system(size: RMGDeviceManager.shared.deviceType == .pad ? 35:20, weight: .semibold))
                                     .foregroundStyle(.black)
                             }
                         }
@@ -112,7 +112,7 @@ struct MGGameView: View {
                         
                     }
                     
-                }.frame(height: MGDeviceManager.shared.deviceType == .pad ? 600:300)
+                }.frame(height: RMGDeviceManager.shared.deviceType == .pad ? 600:300)
             }
             
 
@@ -131,40 +131,40 @@ struct MGGameView: View {
                                 
                                 Button {
                                     presentationMode.wrappedValue.dismiss()
-                                    MGUser.shared.updateUserMoney(for: 100)
+                                    RMGUser.shared.updateUserMoney(for: 100)
                                 } label: {
                                     Image(.homeBtnRMG)
                                         .resizable()
                                         .scaledToFit()
-                                        .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
+                                        .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 120:60)
                                 }
                                 
                                 Button {
                                     gameScene.restartGame()
                                     self.winner = nil
-                                    MGUser.shared.updateUserMoney(for: 100)
+                                    RMGUser.shared.updateUserMoney(for: 100)
                                 } label: {
                                     Image(.backIconRMG)
                                         .resizable()
                                         .scaledToFit()
-                                        .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:80)
+                                        .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 120:80)
                                         .scaleEffect(x: -1, y: 1)
                                 }
                                 
                                 Button {
                                     gameScene.restartGame()
                                     self.winner = nil
-                                    MGUser.shared.updateUserMoney(for: 100)
+                                    RMGUser.shared.updateUserMoney(for: 100)
                                 } label: {
                                     Image(.restartBtnRMG)
                                         .resizable()
                                         .scaledToFit()
-                                        .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
+                                        .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 120:60)
                                 }
                             }
                             
                         }
-                    }.frame(height: MGDeviceManager.shared.deviceType == .pad ? 600:300)
+                    }.frame(height: RMGDeviceManager.shared.deviceType == .pad ? 600:300)
 
                 } else {
                     ZStack {
@@ -183,7 +183,7 @@ struct MGGameView: View {
                                     Image(.homeBtnRMG)
                                         .resizable()
                                         .scaledToFit()
-                                        .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
+                                        .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 120:60)
                                 }
                                 
                                 
@@ -194,12 +194,12 @@ struct MGGameView: View {
                                     Image(.restartBtnRMG)
                                         .resizable()
                                         .scaledToFit()
-                                        .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
+                                        .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 120:60)
                                 }
                             }
                             
                         }
-                    }.frame(height: MGDeviceManager.shared.deviceType == .pad ? 600:300)
+                    }.frame(height: RMGDeviceManager.shared.deviceType == .pad ? 600:300)
 
                 }
             }
@@ -219,5 +219,5 @@ struct MGGameView: View {
 }
 
 #Preview {
-    MGGameView(shopVM: MGShopViewModel(), level: 0)
+    RMGGameView(shopVM: MGShopViewModel(), level: 0)
 }

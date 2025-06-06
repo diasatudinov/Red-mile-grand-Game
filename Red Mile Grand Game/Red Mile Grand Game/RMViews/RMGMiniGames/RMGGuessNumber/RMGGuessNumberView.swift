@@ -1,8 +1,8 @@
 import SwiftUI
 
-struct MGGuessNumberView: View {
+struct RMGGuessNumberView: View {
     @Environment(\.presentationMode) var presentationMode
-    @StateObject var user = MGUser.shared
+    @StateObject var user = RMGUser.shared
     @State private var target = Int.random(in: 100...999)
     @State private var guessDigits: [String] = []
     @State private var feedback: String = ""
@@ -17,7 +17,7 @@ struct MGGuessNumberView: View {
         var body: some View {
             ZStack {
                 if Int(guessDigits.joined()) ?? 0 != target {
-                    VStack(spacing: MGDeviceManager.shared.deviceType == .pad ? 40:20) {
+                    VStack(spacing: RMGDeviceManager.shared.deviceType == .pad ? 40:20) {
                         Spacer()
                         
                         ZStack {
@@ -36,15 +36,15 @@ struct MGGuessNumberView: View {
                                                 Text(idx < guessDigits.count ? guessDigits[idx] : "" )
                                                     .font(.system(size: 36, weight: .bold))
                                                     .foregroundColor(.white)
-                                            }.frame(width: MGDeviceManager.shared.deviceType == .pad ? 250:150, height: MGDeviceManager.shared.deviceType == .pad ? 250:150)
+                                            }.frame(width: RMGDeviceManager.shared.deviceType == .pad ? 250:150, height: RMGDeviceManager.shared.deviceType == .pad ? 250:150)
                                         }
                                     }
                                     
                                     
-                                }.frame(height: MGDeviceManager.shared.deviceType == .pad ? 400:255)
+                                }.frame(height: RMGDeviceManager.shared.deviceType == .pad ? 400:255)
                                 
                                 let columns = Array(repeating: GridItem(.flexible(), spacing: 0), count: 3)
-                                HStack(spacing: MGDeviceManager.shared.deviceType == .pad ? 12:12) {
+                                HStack(spacing: RMGDeviceManager.shared.deviceType == .pad ? 12:12) {
                                     ForEach(padNumbers, id: \ .self) { num in
                                         Button(action: { numberPressed(num) }) {
                                             ZStack {
@@ -52,13 +52,13 @@ struct MGGuessNumberView: View {
                                                     .resizable()
                                                     .scaledToFit()
                                                 Text("\(num)")
-                                                    .font(.system(size: MGDeviceManager.shared.deviceType == .pad ? 50:36, weight: .bold))
+                                                    .font(.system(size: RMGDeviceManager.shared.deviceType == .pad ? 50:36, weight: .bold))
                                                     .foregroundColor(.red)
-                                            }.frame(width: MGDeviceManager.shared.deviceType == .pad ? 100:72, height: MGDeviceManager.shared.deviceType == .pad ? 100:72)
+                                            }.frame(width: RMGDeviceManager.shared.deviceType == .pad ? 100:72, height: RMGDeviceManager.shared.deviceType == .pad ? 100:72)
                                         }
                                         .disabled(guessDigits.count >= 3)
                                     }
-                                }.frame(width: MGDeviceManager.shared.deviceType == .pad ? 480:200)
+                                }.frame(width: RMGDeviceManager.shared.deviceType == .pad ? 480:200)
                                     .padding(.horizontal)
                             }
                         }.padding()
@@ -73,7 +73,7 @@ struct MGGuessNumberView: View {
                             Image(.guessNumTextRMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 100:50)
+                                .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 100:50)
                         }
                         
                         HStack(alignment: .top) {
@@ -84,12 +84,12 @@ struct MGGuessNumberView: View {
                                 Image(.backIconRMG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 100:50)
+                                    .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 100:50)
                             }
                             
                             Spacer()
                             
-                            MGCoinBg()
+                            RMGCoinBg()
                         }.padding([.horizontal, .top])
                         
                     }
@@ -118,11 +118,11 @@ struct MGGuessNumberView: View {
                                 Image(.higherTextRMG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 30:15)
-                                    .offset(y: MGDeviceManager.shared.deviceType == .pad ? 30:15)
+                                    .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 30:15)
+                                    .offset(y: RMGDeviceManager.shared.deviceType == .pad ? 30:15)
                                 
                                 
-                            }.frame(height: MGDeviceManager.shared.deviceType == .pad ? 500:250)
+                            }.frame(height: RMGDeviceManager.shared.deviceType == .pad ? 500:250)
                         } else if Int(guessDigits.joined()) ?? 0 > target {
                             ZStack {
                                 Image(.incorrectBgRMG)
@@ -133,11 +133,11 @@ struct MGGuessNumberView: View {
                                 Image(.lowerTextRMG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 30:15)
-                                    .offset(y: MGDeviceManager.shared.deviceType == .pad ? 30:15)
+                                    .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 30:15)
+                                    .offset(y: RMGDeviceManager.shared.deviceType == .pad ? 30:15)
                                 
                                 
-                            }.frame(height: MGDeviceManager.shared.deviceType == .pad ? 500:250)
+                            }.frame(height: RMGDeviceManager.shared.deviceType == .pad ? 500:250)
                         } else {
                             
                             ZStack {
@@ -156,7 +156,7 @@ struct MGGuessNumberView: View {
                                             Image(.homeBtnRMG)
                                                 .resizable()
                                                 .scaledToFit()
-                                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
+                                                .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 120:60)
                                         }
                                         
                                         Button {
@@ -166,7 +166,7 @@ struct MGGuessNumberView: View {
                                             Image(.backIconRMG)
                                                 .resizable()
                                                 .scaledToFit()
-                                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:80)
+                                                .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 120:80)
                                                 .scaleEffect(x: -1, y: 1)
                                         }
                                         
@@ -177,13 +177,13 @@ struct MGGuessNumberView: View {
                                             Image(.restartBtnRMG)
                                                 .resizable()
                                                 .scaledToFit()
-                                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
+                                                .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 120:60)
                                         }
                                     }
                                 }
                                 
                                 
-                            }.frame(height: MGDeviceManager.shared.deviceType == .pad ? 500:250)
+                            }.frame(height: RMGDeviceManager.shared.deviceType == .pad ? 500:250)
 
                             
                         }
@@ -219,7 +219,7 @@ struct MGGuessNumberView: View {
             feedback = "Too high!"
         } else {
             feedback = "You got it in \(attempts) tries!"
-            MGUser.shared.updateUserMoney(for: 100)
+            RMGUser.shared.updateUserMoney(for: 100)
         }
         if feedback.starts(with: "You got it") {
         } else {
@@ -240,5 +240,5 @@ struct MGGuessNumberView: View {
 }
 
 #Preview {
-    MGGuessNumberView()
+    RMGGuessNumberView()
 }
