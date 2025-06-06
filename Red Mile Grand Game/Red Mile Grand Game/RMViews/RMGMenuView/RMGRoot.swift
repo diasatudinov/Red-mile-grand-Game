@@ -13,9 +13,9 @@ struct RMGRoot: View {
             } else {
                 VStack {
                     if isLoading {
-                        RMSplashScreen()
+                        RMGSplashScreen()
                     } else {
-                        RMMenuView()
+                        RMGMenuView()
                             .onAppear {
                                 AppDelegate.orientationLock = .landscape
                                 setOrientation(.landscapeRight)

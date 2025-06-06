@@ -5,8 +5,8 @@ struct RMGMatchTheCardView: View {
     
     @StateObject var user = RMGUser.shared
     
-    @State private var cards: [MGCard] = []
-    @State private var selectedCards: [MGCard] = []
+    @State private var cards: [RMGCard] = []
+    @State private var selectedCards: [RMGCard] = []
     @State private var message: String = "Find all matching cards!"
     @State private var gameEnded: Bool = false
     @State private var isWin: Bool = false
@@ -79,7 +79,7 @@ struct RMGMatchTheCardView: View {
                         
                         LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 6), spacing: 0) {
                             ForEach(cards) { card in
-                                MGCardView(card: card)
+                                RMGCardView(card: card)
                                     .onTapGesture {
                                         flipCard(card)
                                         
@@ -226,12 +226,12 @@ struct RMGMatchTheCardView: View {
         // Restart timer
         timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
         // Generate cards
-        var gameCards = [MGCard]()
+        var gameCards = [RMGCard]()
         
         // Add 4 cards of each type (24 cards total for 6 types)
         for type in cardTypes {
-            gameCards.append(MGCard(type: type))
-            gameCards.append(MGCard(type: type))
+            gameCards.append(RMGCard(type: type))
+            gameCards.append(RMGCard(type: type))
         }
         
         // Shuffle cards
@@ -241,7 +241,7 @@ struct RMGMatchTheCardView: View {
         cards = Array(gameCards.prefix(gridSize * gridSize))
     }
     
-    private func flipCard(_ card: MGCard) {
+    private func flipCard(_ card: RMGCard) {
         guard let index = cards.firstIndex(where: { $0.id == card.id }),
               !cards[index].isFaceUp,
               !cards[index].isMatched,
@@ -311,8 +311,8 @@ struct RMGMatchTheCardView: View {
     RMGMatchTheCardView()
 }
 
-struct MGCardView: View {
-    let card: MGCard
+struct RMGCardView: View {
+    let card: RMGCard
     
     var body: some View {
         ZStack {
@@ -332,7 +332,7 @@ struct MGCardView: View {
 }
 
 
-struct MGCard: Identifiable {
+struct RMGCard: Identifiable {
     let id = UUID()
     let type: String
     var isFaceUp = false

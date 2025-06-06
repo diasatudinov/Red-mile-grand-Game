@@ -4,8 +4,8 @@ import SpriteKit
 struct RMGMazeGameView: View {
     @Environment(\.presentationMode) var presentationMode
     @State var isWin = false
-    @State private var gameScene: MGMazeScene = {
-        let scene = MGMazeScene(size: UIScreen.main.bounds.size)
+    @State private var gameScene: RMGMazeScene = {
+        let scene = RMGMazeScene(size: UIScreen.main.bounds.size)
         scene.scaleMode = .resizeFill
         return scene
     }()
@@ -15,7 +15,7 @@ struct RMGMazeGameView: View {
     var body: some View {
         ZStack {
             
-            MGMazeViewContainer(scene: gameScene, isWin: $isWin)
+            RMGMazeViewContainer(scene: gameScene, isWin: $isWin)
             
             VStack {
                 ZStack {

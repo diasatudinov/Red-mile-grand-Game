@@ -18,11 +18,11 @@ struct RMGMiniGameChooseView: View {
                             Image(.backIconRMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 100:50)
+                                .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 100:50)
                         }
                         Spacer()
                         
-                        MGCoinBg()
+                        RMGCoinBg()
                     }.padding([.horizontal, .top])
                     
                 }
@@ -38,7 +38,7 @@ struct RMGMiniGameChooseView: View {
                             Image(.game1IconRMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 300:180)
+                                .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 300:180)
                             
                         }
                         
@@ -48,7 +48,7 @@ struct RMGMiniGameChooseView: View {
                             Image(.game2IconRMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 300:180)
+                                .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 300:180)
                             
                         }
                         Button {
@@ -57,7 +57,7 @@ struct RMGMiniGameChooseView: View {
                             Image(.game3IconRMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 300:180)
+                                .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 300:180)
                             
                         }
                         
@@ -67,7 +67,7 @@ struct RMGMiniGameChooseView: View {
                             Image(.game4IconRMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 300:180)
+                                .frame(height: RMGDeviceManager.shared.deviceType == .pad ? 300:180)
                             
                         }
                     }
@@ -85,16 +85,16 @@ struct RMGMiniGameChooseView: View {
             }
         )
         .fullScreenCover(isPresented: $game1) {
-            MGMatchTheCardView()
+            RMGMatchTheCardView()
         }
         .fullScreenCover(isPresented: $game2) {
-            MGGuessNumberView()
+            RMGGuessNumberView()
         }
         .fullScreenCover(isPresented: $game3) {
-            MGFindSequenceView()
+            RMGFindSequenceView()
         }
         .fullScreenCover(isPresented: $game4) {
-            MGMazeGameView()
+            RMGMazeGameView()
             
         }
     }
