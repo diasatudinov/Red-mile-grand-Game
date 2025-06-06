@@ -4,7 +4,7 @@ struct RMGAchievementsView: View {
     @StateObject var user = RMGUser.shared
     @Environment(\.presentationMode) var presentationMode
 
-    @ObservedObject var viewModel: MGAchievementsViewModel
+    @ObservedObject var viewModel: RMGAchievementsViewModel
     var body: some View {
         ZStack {
             
@@ -102,5 +102,5 @@ struct RMGAchievementsView: View {
 
 
 #Preview {
-    RMGAchievementsView(viewModel: MGAchievementsViewModel())
+    RMGAchievementsView(viewModel: RMGAchievementsViewModel())
 }

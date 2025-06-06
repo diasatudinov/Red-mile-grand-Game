@@ -3,12 +3,12 @@ import SwiftUI
 struct RMGCalendarView: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject var user = RMGUser.shared
-    @ObservedObject var viewModel: CalendarViewModel
+    @ObservedObject var viewModel: RMGCalendarViewModel
     @State private var timer: Timer?
     
     @State private var bonusAmount = 0
     let defaults = UserDefaults.standard
-    var bonuses: [Bonus] {
+    var bonuses: [RMGBonus] {
         return viewModel.bonuses
     }
     @AppStorage("openedBonuses") var openBonus = 1
@@ -180,5 +180,5 @@ struct RMGCalendarView: View {
 }
 
 #Preview {
-    RMGCalendarView(viewModel: CalendarViewModel())
+    RMGCalendarView(viewModel: RMGCalendarViewModel())
 }
